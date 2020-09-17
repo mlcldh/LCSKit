@@ -57,17 +57,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         case .viewGesture:
             vc = LCViewGestureViewController()
         case .urlEncodeDecode:
-            vc = UIViewController()
+            vc = LCUrlEncodeViewController()
         case .combineViews:
-            vc = UIViewController()
+            vc = LCCombineViewsViewController()
         case .useConstraintPurely:
-            vc = UIViewController()
+            vc = LCUseConstraintPurelyViewController()
         case .useUtility:
-            vc = UIViewController()
+            vc = LCUseUtilityViewController()
         case .photoPermission:
-            vc = UIViewController()
+            vc = LCPhotoPermissionViewController()
         case .seeLocalFile:
-            vc = UIViewController()
+            vc = LCSeeLocalFileViewController()
         case .useProxy:
             vc = UIViewController()
         case .useArchiver:

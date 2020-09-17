@@ -48,7 +48,7 @@ extension UIView {
         return gestureRecognizer
     }
     /**移除某些类型手势及其回调*/
-    func lcs_removeGestureRecognizers(type: LCSGestureRecognizerType) {
+    public func lcs_removeGestureRecognizers(type: LCSGestureRecognizerType) {
         let viewTargets = lcs_viewTargets()
         let removedViewTargets = NSMutableArray()
         viewTargets.forEach { obj in
@@ -66,7 +66,7 @@ extension UIView {
         }
     }
     /**移除所有手势及其回调*/
-    func lcs_removeAllGestureRecognizers() {
+    public func lcs_removeAllGestureRecognizers() {
         let viewTargets = lcs_viewTargets()
         viewTargets.forEach { obj in
             guard let controlTarget = obj as? LCSViewTarget, let gestureRecognizer = controlTarget.gestureRecognizer else {
@@ -76,6 +76,42 @@ extension UIView {
         }
         viewTargets.removeAllObjects()
     }
+    /**移除自己的某一些约束*/
+    public func lcs_removeConstraints(firstItem: AnyObject?, firstAttribute: NSLayoutConstraint.Attribute) {
+        constraints.forEach { constraint in
+            guard constraint.firstItem === firstItem, constraint.firstAttribute == firstAttribute else {
+                return
+            }
+            if #available(iOS 8, *) {
+                constraint.isActive = false
+            } else {
+                removeConstraint(constraint)
+            }
+        }
+    }
+    /**移除firstItem是自己的某一些约束*/
+    public func lcs_removeConstraints(firstAttribute: NSLayoutConstraint.Attribute, secondItem: Any) {
+        
+    }
+    /**添加约束*/
+    public func lcs_addConstraint(firstAttribute: NSLayoutConstraint.Attribute, relation: NSLayoutConstraint.Relation, secondItem: AnyObject?, secondAttribute: NSLayoutConstraint.Attribute, multiplier: CGFloat, constant: CGFloat) {
+        let constraint = NSLayoutConstraint(item: self, attribute: firstAttribute, relatedBy: relation, toItem: secondItem, attribute: secondAttribute, multiplier: multiplier, constant: constant)
+        if #available(iOS 8, *) {
+            constraint.isActive = true
+        } else {
+            var superview = self
+            
+            if let secondView = secondItem as? UIView {
+                superview = lcs_closestCommonSuperview(secondView: secondView)
+            }
+            superview.addConstraint(constraint)
+        }
+    }
+    /**返回离两个view最近的父视图*/
+    public func lcs_closestCommonSuperview(secondView: UIView?) -> UIView {
+        UIView()
+    }
+    
     private class LCSViewTarget: NSObject {
         
         let type: LCSGestureRecognizerType

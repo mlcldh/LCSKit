@@ -35,6 +35,18 @@ class LCViewGestureViewController: UIViewController {
             }
             print("menglc tap \(aLabel.text ?? "nil")")
         }
+        let _ = label.lcs_addGestureRecognizer(type: .tap) { gestureRecognizer in
+            guard let aLabel = gestureRecognizer.view as? UILabel else {
+                return
+            }
+            print("menglc tap2 \(aLabel.text ?? "nil")")
+        }
+        let _ = label.lcs_addGestureRecognizer(type: .tap) { gestureRecognizer in
+            guard let aLabel = gestureRecognizer.view as? UILabel else {
+                return
+            }
+            print("menglc tap3 \(aLabel.text ?? "nil")")
+        }
         let _ = label.lcs_addGestureRecognizer(type: .longPress) { gestureRecognizer in
             guard let longPressGestureRecognizer = gestureRecognizer as? UILongPressGestureRecognizer, longPressGestureRecognizer.state == .began, let aLabel = gestureRecognizer.view as? UILabel else {
                 return
@@ -61,6 +73,14 @@ class LCViewGestureViewController: UIViewController {
         button.setTitleColor(.white, for: .normal)
         button.lcs_addActionForControlEvents(controlEvents: .touchUpInside) { sender in
             print("menglc button UIControlEventTouchUpInside")
+        }
+        button.lcs_addActionForControlEvents(controlEvents: .touchUpInside) { sender in
+            print("menglc button UIControlEventTouchUpInside2")
+        }
+//        button.lcs_removeAllActions(forControlEvents: .touchUpInside)
+//        button.lcs_removeAllActions()
+        button.lcs_addActionForControlEvents(controlEvents: .touchUpInside) { sender in
+            print("menglc button UIControlEventTouchUpInside3")
         }
         view.addSubview(button)
         button.snp_makeConstraints { (make) in

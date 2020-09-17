@@ -11,8 +11,8 @@ Pod::Spec.new do |s|
 
   s.author             = { "mlcldh" => "1228225993@qq.com" }
 
-  s.platform     = :ios, '7.0'
-  s.ios.deployment_target = '7.0'
+  s.platform     = :ios, '8.0'
+  s.ios.deployment_target = '8.0'
 
   s.source       = { :git => "https://github.com/mlcldh/LCSKit.git", :tag => s.version.to_s }
 #  s.source_files = "LCSKit"
@@ -32,13 +32,13 @@ Pod::Spec.new do |s|
     ss.frameworks = 'UIKit'
   end
   
-  s.subspec 'LocalFolder' do |ss|
-    ss.source_files = 'LCSKit/LocalFolder/*.{swift}'
+  s.subspec 'Constant' do |ss|
+    ss.source_files = 'LCSKit/Constant/*.{swift}'
     ss.frameworks = 'UIKit'
   end
   
-  s.subspec 'Macro' do |ss|
-    ss.source_files = 'LCSKit/Macro/*.{swift}'
+  s.subspec 'LocalFolder' do |ss|
+    ss.source_files = 'LCSKit/LocalFolder/*.{swift}'
     ss.frameworks = 'UIKit'
   end
   
