@@ -21,8 +21,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         case seeLocalFile = "查看本地沙盒文件"
         case useProxy = "使用LCSProxy去除循环引用"
         case useArchiver = "归档、反归档"
+        case json = "json使用"
     }
-    private let titles: [Title] = [.viewGesture, .urlEncodeDecode, .combineViews, .useConstraintPurely, .useUtility, .photoPermission, .seeLocalFile, .useProxy, .useArchiver]
+    private let titles: [Title] = [.viewGesture, .urlEncodeDecode, .combineViews, .useConstraintPurely, .useUtility, .photoPermission, .seeLocalFile, .useProxy, .useArchiver, .json]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,6 +73,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             vc = UIViewController()
         case .useArchiver:
             vc = UIViewController()
+        case .json:
+            vc = LCJsonViewController()
         }
         navigationController?.pushViewController(vc, animated: true)
     }
