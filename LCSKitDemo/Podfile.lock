@@ -1,5 +1,6 @@
 PODS:
   - LCSKit (0.0.1):
+    - LCSKit/Cache (= 0.0.1)
     - LCSKit/Category (= 0.0.1)
     - LCSKit/Constant (= 0.0.1)
     - LCSKit/LocalFolder (= 0.0.1)
@@ -7,6 +8,8 @@ PODS:
     - LCSKit/Proxy (= 0.0.1)
     - LCSKit/UI (= 0.0.1)
     - LCSKit/Utility (= 0.0.1)
+  - LCSKit/Cache (0.0.1):
+    - YYCache
   - LCSKit/Category (0.0.1)
   - LCSKit/Constant (0.0.1)
   - LCSKit/LocalFolder (0.0.1)
@@ -17,6 +20,7 @@ PODS:
     - SnapKit
   - LCSKit/Utility (0.0.1)
   - SnapKit (4.2.0)
+  - YYCache (1.0.4)
 
 DEPENDENCIES:
   - LCSKit (from `../../LCSKit`)
@@ -25,15 +29,17 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - SnapKit
+    - YYCache
 
 EXTERNAL SOURCES:
   LCSKit:
     :path: "../../LCSKit"
 
 SPEC CHECKSUMS:
-  LCSKit: fbfff216b48028c8789974eebaaaad5f81b961b5
+  LCSKit: 84ab5c754ff50e57be68da6b125dd6cdb8903b23
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
+  YYCache: 8105b6638f5e849296c71f331ff83891a4942952
 
-PODFILE CHECKSUM: f0c6f84e1033e41e417705bc91f0963e0345a211
+PODFILE CHECKSUM: 86706f68c9097e40cdd5932321b439d5b9d0354a
 
 COCOAPODS: 1.9.3

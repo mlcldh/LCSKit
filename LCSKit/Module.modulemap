@@ -1,0 +1,11 @@
+//
+//  Module.swift
+//  ModulemapDemo
+//
+//  Created by menglingchao on 2020/11/2.
+//
+
+module TestModulemap [system] {
+    header "YYCache.h"
+    export *
+}

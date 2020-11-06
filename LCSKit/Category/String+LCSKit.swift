@@ -24,11 +24,9 @@ extension String {
         return decodeString
     }
     public func lcs_JSONObject() -> Any? {
-        guard let stringNS = self as? NSString, let jsonData = data(using: .utf8) else {
+        guard let stringNS = self as? NSString, let jsonData = data(using: .utf8), let jsonObject = try? JSONSerialization.jsonObject(with: jsonData) else {
             return nil
         }
-        let jsonObject = try! JSONSerialization.jsonObject(with: jsonData)
-        
         return jsonObject
     }
 }

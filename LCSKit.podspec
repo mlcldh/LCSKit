@@ -16,16 +16,21 @@ Pod::Spec.new do |s|
 
   s.source       = { :git => "https://github.com/mlcldh/LCSKit.git", :tag => s.version.to_s }
 #  s.source_files = "LCSKit"
-  s.source_files = 'LCSKit/LCSKit.h'
-
+  s.module_name   = 'LCSKit'
+  s.source_files = 'LCSKit/LCSKit.h', 'LCSKit/*.{modulemap}'
+  s.swift_version = '5.3'
+  
   s.requires_arc = true
   s.static_framework = true
   
-#  s.subspec 'Cache' do |ss|
-#    ss.source_files = 'LCSKit/Cache/*.{swift}'
-#    ss.dependency 'YYCache'
-#    ss.frameworks = 'Foundation'
-#  end
+  s.preserve_path = "LCSKit/module.modulemap"
+  s.xcconfig = { "SWIFT_INCLUDE_PATHS" => "$(PODS_ROOT)/HCKit-Swift/Module"}
+  
+  s.subspec 'Cache' do |ss|
+    ss.source_files = 'LCSKit/Cache/*.{swift}'
+    ss.dependency 'YYCache'
+    ss.frameworks = 'Foundation'
+  end
   
   s.subspec 'Category' do |ss|
     ss.source_files = 'LCSKit/Category/*.{swift}'
