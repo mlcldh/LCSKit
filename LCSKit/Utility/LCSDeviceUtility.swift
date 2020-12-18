@@ -1,5 +1,5 @@
 //
-//  LCSUtility.swift
+//  LCSDeviceUtility.swift
 //  LCSKit
 //
 //  Created by menglingchao on 2020/9/15.
@@ -8,7 +8,7 @@
 import UIKit
 
 /**工具类*/
-public class LCSUtility: NSObject {
+public class LCSDeviceUtility: NSObject {
     
     /**app版本号*/
     public class func appVersion() -> String {

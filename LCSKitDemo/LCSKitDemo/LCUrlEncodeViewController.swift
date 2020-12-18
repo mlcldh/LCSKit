@@ -8,25 +8,23 @@
 
 import UIKit
 
-class LCUrlEncodeViewController: UIViewController {
+class LCUrlEncodeViewController: LCBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        
-        view.backgroundColor = .white
-        
+                
         useUrlEncode()
         useUrlDecode()
     }
     // MARK: -
-    func useUrlEncode() {//URL编码
+    private func useUrlEncode() {//URL编码
         let string = "https://www.baidu.com/s?ie=UTF-8&wd=mac电脑&name=你猜啊"
         let encodeString = string.lcs_urlEncode()
         print("menglc string = \(string),\n encodeString = \(encodeString ?? "nil")")
     }
-    func useUrlDecode() {//URL解码
+    private func useUrlDecode() {//URL解码
         let string = "https://www.baidu.com/s?ie=UTF-8&wd=mac电脑&name=你猜啊"
         let encodeString = string.lcs_urlEncode()
         let decodeString = (encodeString ?? "").lcs_urlDecode()

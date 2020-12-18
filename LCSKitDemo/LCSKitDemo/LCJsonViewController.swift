@@ -8,19 +8,18 @@
 
 import UIKit
 
-class LCJsonViewController: UIViewController {
+class LCJsonViewController: LCBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        view.backgroundColor = .white
         
         getJSONString()
         getJSONObject()
     }
     // MARK: -
-    func getJSONString() {
+    private func getJSONString() {
         let obj = " "
 //        let obj:[String] = []
 //        let obj = ["Tom", "Jim", "Jordon"]
@@ -31,7 +30,7 @@ class LCJsonViewController: UIViewController {
             print("menglc getJSONString nil")
         }
     }
-    func getJSONObject() {
+    private func getJSONObject() {
         let jsonString = " "
 //        let jsonString = "[\"Tom\",\"Jim\",\"Jordon\"]"
 //        let jsonString = "{\"name\": \"Tom\", \"age\": 22, \"height\": 1.98}"

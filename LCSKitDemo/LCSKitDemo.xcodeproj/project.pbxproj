@@ -14,7 +14,8 @@
 		8D6A440B2510BAF800A7CC20 /* LCCombineViewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6A440A2510BAF800A7CC20 /* LCCombineViewsViewController.swift */; };
 		8D6A440D2510BB1700A7CC20 /* LCUseConstraintPurelyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6A440C2510BB1700A7CC20 /* LCUseConstraintPurelyViewController.swift */; };
 		8D6A440F2510BB2400A7CC20 /* LCUseUtilityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6A440E2510BB2400A7CC20 /* LCUseUtilityViewController.swift */; };
-		8D6A44112510BB3300A7CC20 /* LCPhotoPermissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6A44102510BB3300A7CC20 /* LCPhotoPermissionViewController.swift */; };
+		8D6A44112510BB3300A7CC20 /* LCPhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6A44102510BB3300A7CC20 /* LCPhotosViewController.swift */; };
+		8DDE0189258C9EE100B647B0 /* LCBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDE0188258C9EE100B647B0 /* LCBaseViewController.swift */; };
 		8DFCDB26250F4EBE00DBEE89 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFCDB25250F4EBE00DBEE89 /* AppDelegate.swift */; };
 		8DFCDB2A250F4EBE00DBEE89 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFCDB29250F4EBE00DBEE89 /* ViewController.swift */; };
 		8DFCDB2F250F4EC200DBEE89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DFCDB2E250F4EC200DBEE89 /* Assets.xcassets */; };
@@ -32,7 +33,8 @@
 		8D6A440A2510BAF800A7CC20 /* LCCombineViewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LCCombineViewsViewController.swift; sourceTree = "<group>"; };
 		8D6A440C2510BB1700A7CC20 /* LCUseConstraintPurelyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LCUseConstraintPurelyViewController.swift; sourceTree = "<group>"; };
 		8D6A440E2510BB2400A7CC20 /* LCUseUtilityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LCUseUtilityViewController.swift; sourceTree = "<group>"; };
-		8D6A44102510BB3300A7CC20 /* LCPhotoPermissionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LCPhotoPermissionViewController.swift; sourceTree = "<group>"; };
+		8D6A44102510BB3300A7CC20 /* LCPhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LCPhotosViewController.swift; sourceTree = "<group>"; };
+		8DDE0188258C9EE100B647B0 /* LCBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LCBaseViewController.swift; sourceTree = "<group>"; };
 		8DFCDB22250F4EBE00DBEE89 /* LCSKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LCSKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DFCDB25250F4EBE00DBEE89 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8DFCDB29250F4EBE00DBEE89 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -77,12 +79,13 @@
 			children = (
 				8DFCDB25250F4EBE00DBEE89 /* AppDelegate.swift */,
 				8DFCDB29250F4EBE00DBEE89 /* ViewController.swift */,
+				8DDE0188258C9EE100B647B0 /* LCBaseViewController.swift */,
 				8DFCDB3B250F58DD00DBEE89 /* LCViewGestureViewController.swift */,
 				8D6A44082510BAD900A7CC20 /* LCUrlEncodeViewController.swift */,
 				8D6A440A2510BAF800A7CC20 /* LCCombineViewsViewController.swift */,
 				8D6A440C2510BB1700A7CC20 /* LCUseConstraintPurelyViewController.swift */,
 				8D6A440E2510BB2400A7CC20 /* LCUseUtilityViewController.swift */,
-				8D6A44102510BB3300A7CC20 /* LCPhotoPermissionViewController.swift */,
+				8D6A44102510BB3300A7CC20 /* LCPhotosViewController.swift */,
 				8D6A43F42510631F00A7CC20 /* LCSeeLocalFileViewController.swift */,
 				8D2FD24D25315BDA00008402 /* LCJsonViewController.swift */,
 				8DFCDB2E250F4EC200DBEE89 /* Assets.xcassets */,
@@ -209,11 +212,12 @@
 				8DFCDB2A250F4EBE00DBEE89 /* ViewController.swift in Sources */,
 				8D6A440B2510BAF800A7CC20 /* LCCombineViewsViewController.swift in Sources */,
 				8DFCDB3C250F58DD00DBEE89 /* LCViewGestureViewController.swift in Sources */,
-				8D6A44112510BB3300A7CC20 /* LCPhotoPermissionViewController.swift in Sources */,
+				8D6A44112510BB3300A7CC20 /* LCPhotosViewController.swift in Sources */,
 				8D6A440F2510BB2400A7CC20 /* LCUseUtilityViewController.swift in Sources */,
 				8DFCDB26250F4EBE00DBEE89 /* AppDelegate.swift in Sources */,
 				8D6A440D2510BB1700A7CC20 /* LCUseConstraintPurelyViewController.swift in Sources */,
 				8D6A43F52510631F00A7CC20 /* LCSeeLocalFileViewController.swift in Sources */,
+				8DDE0189258C9EE100B647B0 /* LCBaseViewController.swift in Sources */,
 				8D2FD24E25315BDA00008402 /* LCJsonViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

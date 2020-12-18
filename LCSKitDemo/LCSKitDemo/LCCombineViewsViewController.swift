@@ -8,14 +8,13 @@
 
 import UIKit
 
-class LCCombineViewsViewController: UIViewController {
+class LCCombineViewsViewController: LCBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
         
-        view.backgroundColor = .white
     }
     // MARK: -
     

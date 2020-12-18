@@ -8,19 +8,17 @@
 
 import UIKit
 
-class LCUseUtilityViewController: UIViewController {
+class LCUseUtilityViewController: LCBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        
-        view.backgroundColor = .white
-        
+                
         getIdfaAndIdfv()
     }
     // MARK: -
-    func getIdfaAndIdfv() {
+    private func getIdfaAndIdfv() {
         
     }
 }

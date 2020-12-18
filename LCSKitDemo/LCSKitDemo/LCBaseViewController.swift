@@ -1,15 +1,18 @@
 //
-//  LCPhotoPermissionViewController.swift
+//  LCBaseViewController.swift
 //  LCSKitDemo
 //
-//  Created by menglingchao on 2020/9/15.
+//  Created by menglingchao on 2020/12/18.
 //  Copyright © 2020 MengLingChao. All rights reserved.
 //
 
 import UIKit
 
-class LCPhotoPermissionViewController: UIViewController {
+class LCBaseViewController: UIViewController {
     
+    deinit {
+        print("menglc deinit \(self)")
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -17,6 +20,4 @@ class LCPhotoPermissionViewController: UIViewController {
         
         view.backgroundColor = .white
     }
-    // MARK: -
-    
 }

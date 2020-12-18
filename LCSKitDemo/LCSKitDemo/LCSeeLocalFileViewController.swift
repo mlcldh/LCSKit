@@ -9,19 +9,17 @@
 import UIKit
 import LCSKit
 
-class LCSeeLocalFileViewController: UIViewController {
+class LCSeeLocalFileViewController: LCBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        
-        view.backgroundColor = .white
-        
+                
         seeLocalFile()
     }
     // MARK: -
-    func seeLocalFile() {
+    private func seeLocalFile() {
         let seeLocalFileButton = UIButton(type: .system)
         seeLocalFileButton.backgroundColor = .purple
         seeLocalFileButton.setTitleColor(.white, for: .normal)

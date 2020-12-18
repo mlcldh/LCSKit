@@ -16,14 +16,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         case urlEncodeDecode = "URL编解码"
         case combineViews = "批量连接视图"
         case useConstraintPurely = "直接调用系统方法操作约束"
-        case useUtility = "使用工具类MLCUtility"
-        case photoPermission = "获取相册/相机权限"
+        case useUtility = "工具类MLCDeviceUtility"
+        case photos = "相册/相机相关"
         case seeLocalFile = "查看本地沙盒文件"
         case useProxy = "使用LCSProxy去除循环引用"
         case useArchiver = "归档、反归档"
         case json = "json使用"
     }
-    private let titles: [Title] = [.viewGesture, .urlEncodeDecode, .combineViews, .useConstraintPurely, .useUtility, .photoPermission, .seeLocalFile, .useProxy, .useArchiver, .json]
+    private let titles: [Title] = [.viewGesture, .urlEncodeDecode, .combineViews, .useConstraintPurely, .useUtility, .photos, .seeLocalFile, .useProxy, .useArchiver, .json]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,8 +65,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             vc = LCUseConstraintPurelyViewController()
         case .useUtility:
             vc = LCUseUtilityViewController()
-        case .photoPermission:
-            vc = LCPhotoPermissionViewController()
+        case .photos:
+            vc = LCPhotosViewController()
         case .seeLocalFile:
             vc = LCSeeLocalFileViewController()
         case .useProxy:
