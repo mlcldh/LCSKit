@@ -7,7 +7,8 @@ target:'LCSKitDemo'
 
 #pod 'Masonry', '1.1.0'
 pod 'SnapKit','4.2.0'
+pod 'YYCache', '1.0.4', :modular_headers => true
 pod 'LCSKit', :path => '../../LCSKit'
 
-use_modular_headers!
+#use_modular_headers!
 

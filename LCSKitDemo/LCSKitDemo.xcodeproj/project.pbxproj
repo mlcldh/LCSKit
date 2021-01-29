@@ -16,6 +16,7 @@
 		8D6A440F2510BB2400A7CC20 /* LCUseUtilityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6A440E2510BB2400A7CC20 /* LCUseUtilityViewController.swift */; };
 		8D6A44112510BB3300A7CC20 /* LCPhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6A44102510BB3300A7CC20 /* LCPhotosViewController.swift */; };
 		8DDE0189258C9EE100B647B0 /* LCBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDE0188258C9EE100B647B0 /* LCBaseViewController.swift */; };
+		8DE8D97625C3F9C000BB7C23 /* LCUseUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE8D97525C3F9C000BB7C23 /* LCUseUIViewController.swift */; };
 		8DFCDB26250F4EBE00DBEE89 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFCDB25250F4EBE00DBEE89 /* AppDelegate.swift */; };
 		8DFCDB2A250F4EBE00DBEE89 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFCDB29250F4EBE00DBEE89 /* ViewController.swift */; };
 		8DFCDB2F250F4EC200DBEE89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DFCDB2E250F4EC200DBEE89 /* Assets.xcassets */; };
@@ -35,6 +36,7 @@
 		8D6A440E2510BB2400A7CC20 /* LCUseUtilityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LCUseUtilityViewController.swift; sourceTree = "<group>"; };
 		8D6A44102510BB3300A7CC20 /* LCPhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LCPhotosViewController.swift; sourceTree = "<group>"; };
 		8DDE0188258C9EE100B647B0 /* LCBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LCBaseViewController.swift; sourceTree = "<group>"; };
+		8DE8D97525C3F9C000BB7C23 /* LCUseUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LCUseUIViewController.swift; sourceTree = "<group>"; };
 		8DFCDB22250F4EBE00DBEE89 /* LCSKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LCSKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DFCDB25250F4EBE00DBEE89 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8DFCDB29250F4EBE00DBEE89 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				8D6A44102510BB3300A7CC20 /* LCPhotosViewController.swift */,
 				8D6A43F42510631F00A7CC20 /* LCSeeLocalFileViewController.swift */,
 				8D2FD24D25315BDA00008402 /* LCJsonViewController.swift */,
+				8DE8D97525C3F9C000BB7C23 /* LCUseUIViewController.swift */,
 				8DFCDB2E250F4EC200DBEE89 /* Assets.xcassets */,
 				8DFCDB30250F4EC200DBEE89 /* LaunchScreen.storyboard */,
 				8DFCDB33250F4EC200DBEE89 /* Info.plist */,
@@ -211,6 +214,7 @@
 				8D6A44092510BAD900A7CC20 /* LCUrlEncodeViewController.swift in Sources */,
 				8DFCDB2A250F4EBE00DBEE89 /* ViewController.swift in Sources */,
 				8D6A440B2510BAF800A7CC20 /* LCCombineViewsViewController.swift in Sources */,
+				8DE8D97625C3F9C000BB7C23 /* LCUseUIViewController.swift in Sources */,
 				8DFCDB3C250F58DD00DBEE89 /* LCViewGestureViewController.swift in Sources */,
 				8D6A44112510BB3300A7CC20 /* LCPhotosViewController.swift in Sources */,
 				8D6A440F2510BB2400A7CC20 /* LCUseUtilityViewController.swift in Sources */,
