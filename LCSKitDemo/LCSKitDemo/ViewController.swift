@@ -22,9 +22,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         case useProxy = "使用LCSProxy去除循环引用"
         case useArchiver = "归档、反归档"
         case json = "json使用"
-        case ui = "UI使用"
+        case annularView = "AnnularView使用"
     }
-    private let titles: [Title] = [.viewGesture, .urlEncodeDecode, .combineViews, .useConstraintPurely, .useUtility, .photos, .seeLocalFile, .useProxy, .useArchiver, .json, .ui]
+    private let titles: [Title] = [.viewGesture, .urlEncodeDecode, .combineViews, .useConstraintPurely, .useUtility, .photos, .seeLocalFile, .useProxy, .useArchiver, .json, .annularView]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,8 +76,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             vc = UIViewController()
         case .json:
             vc = LCJsonViewController()
-        case .ui:
-            vc = LCUseUIViewController()
+        case .annularView:
+            vc = LCUseAnnularViewController()
         }
         navigationController?.pushViewController(vc, animated: true)
     }

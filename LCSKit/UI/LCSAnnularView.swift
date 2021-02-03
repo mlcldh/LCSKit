@@ -15,13 +15,22 @@ public class LCSAnnularView: UIView {
     /// 环
     public let line = LCSShapeLayerView()
     
-    /// 初始化方法
+    /// 便利构造器
     /// - Parameters:
+    ///   - strokeThickness: 环宽度
+    ///   - width: 宽度，height也使用width
+    ///   - rounded: 是否是圆角，针对width、height不相等时
+    public convenience init(strokeThickness: CGFloat, width: CGFloat, rounded: Bool = true) {
+        self.init(strokeThickness: strokeThickness, width: width, height: width, rounded: rounded)
+    }
+    
+    /// 指定构造器
+    /// - Parameters:
+    ///   - strokeThickness: 环宽度
     ///   - width: 宽度
     ///   - height: 高度
     ///   - rounded: 是否是圆角，针对width、height不相等时
-    ///   - strokeThickness: 环宽度
-    public init(width: CGFloat, height: CGFloat, rounded: Bool, strokeThickness: CGFloat) {
+    public init(strokeThickness: CGFloat, width: CGFloat, height: CGFloat, rounded: Bool = true) {
         super.init(frame: CGRect(x: 0, y: 0, width: width, height: height))
         
         lineBackground.shapeLayer().lineWidth = strokeThickness
@@ -37,8 +46,7 @@ public class LCSAnnularView: UIView {
         addSubview(lineBackground)
         lineBackground.snp_makeConstraints { (make) in
             make.center.equalToSuperview()
-            make.width.equalTo(width - strokeThickness)
-            make.height.equalTo(height - strokeThickness)
+            make.width.height.equalToSuperview().offset(-strokeThickness)
         }
         
         line.shapeLayer().lineWidth = strokeThickness
