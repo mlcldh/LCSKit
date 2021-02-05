@@ -3,6 +3,7 @@
 //  LCSKit
 //
 //  Created by menglingchao on 2020/9/15.
+//  Copyright © 2020 MengLingChao. All rights reserved.
 //
 
 import UIKit
@@ -33,8 +34,7 @@ public class LCSLocalFolderViewController: UIViewController, UITableViewDelegate
         
         subpaths.append("..")
         
-        do {
-            let contents = try FileManager.default.contentsOfDirectory(atPath: folderPath)
+        if let contents = try? FileManager.default.contentsOfDirectory(atPath: folderPath) {
             contents.forEach { fileName in
                 guard let folderPathNS = folderPath as NSString? else {
                     return
@@ -50,8 +50,7 @@ public class LCSLocalFolderViewController: UIViewController, UITableViewDelegate
                     files.append(fileName)
                 }
             }
-        }
-        catch {
+        } else {
             print("menglc contentsOfDirectory failed")
         }
         

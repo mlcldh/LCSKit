@@ -3,6 +3,7 @@
 //  LCSKit
 //
 //  Created by menglingchao on 2020/9/15.
+//  Copyright © 2020 MengLingChao. All rights reserved.
 //
 
 import Foundation
@@ -23,10 +24,11 @@ extension String {
         }
         return decodeString
     }
-    public func lcs_JSONObject() -> Any? {
-        guard let jsonData = data(using: .utf8), let jsonObject = try? JSONSerialization.jsonObject(with: jsonData) else {
+    public func lcs_JSONObject() throws -> Any? {
+        guard let jsonData = data(using: .utf8) else {
             return nil
         }
+        let jsonObject = try JSONSerialization.jsonObject(with: jsonData)
         return jsonObject
     }
 }

@@ -3,6 +3,7 @@
 //  LCSKit
 //
 //  Created by menglingchao on 2020/12/18.
+//  Copyright © 2020 MengLingChao. All rights reserved.
 //
 
 import UIKit
