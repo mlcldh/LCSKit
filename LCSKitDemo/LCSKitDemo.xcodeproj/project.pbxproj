@@ -15,6 +15,8 @@
 		8D6A440D2510BB1700A7CC20 /* LCUseConstraintPurelyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6A440C2510BB1700A7CC20 /* LCUseConstraintPurelyViewController.swift */; };
 		8D6A440F2510BB2400A7CC20 /* LCUseUtilityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6A440E2510BB2400A7CC20 /* LCUseUtilityViewController.swift */; };
 		8D6A44112510BB3300A7CC20 /* LCPhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6A44102510BB3300A7CC20 /* LCPhotosViewController.swift */; };
+		8D7FDF612608875D004C54D2 /* LCUseTableViewHelperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7FDF602608875D004C54D2 /* LCUseTableViewHelperViewController.swift */; };
+		8D7FDF642608877E004C54D2 /* LCATableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7FDF632608877E004C54D2 /* LCATableViewCell.swift */; };
 		8DDE0189258C9EE100B647B0 /* LCBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDE0188258C9EE100B647B0 /* LCBaseViewController.swift */; };
 		8DE8D97625C3F9C000BB7C23 /* LCUseAnnularViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE8D97525C3F9C000BB7C23 /* LCUseAnnularViewController.swift */; };
 		8DFCDB26250F4EBE00DBEE89 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFCDB25250F4EBE00DBEE89 /* AppDelegate.swift */; };
@@ -35,6 +37,8 @@
 		8D6A440C2510BB1700A7CC20 /* LCUseConstraintPurelyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LCUseConstraintPurelyViewController.swift; sourceTree = "<group>"; };
 		8D6A440E2510BB2400A7CC20 /* LCUseUtilityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LCUseUtilityViewController.swift; sourceTree = "<group>"; };
 		8D6A44102510BB3300A7CC20 /* LCPhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LCPhotosViewController.swift; sourceTree = "<group>"; };
+		8D7FDF602608875D004C54D2 /* LCUseTableViewHelperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LCUseTableViewHelperViewController.swift; sourceTree = "<group>"; };
+		8D7FDF632608877E004C54D2 /* LCATableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LCATableViewCell.swift; sourceTree = "<group>"; };
 		8DDE0188258C9EE100B647B0 /* LCBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LCBaseViewController.swift; sourceTree = "<group>"; };
 		8DE8D97525C3F9C000BB7C23 /* LCUseAnnularViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LCUseAnnularViewController.swift; sourceTree = "<group>"; };
 		8DFCDB22250F4EBE00DBEE89 /* LCSKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LCSKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -58,6 +62,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8D7FDF5F26088728004C54D2 /* UseTableViewHelper */ = {
+			isa = PBXGroup;
+			children = (
+				8D7FDF602608875D004C54D2 /* LCUseTableViewHelperViewController.swift */,
+				8D7FDF632608877E004C54D2 /* LCATableViewCell.swift */,
+			);
+			path = UseTableViewHelper;
+			sourceTree = "<group>";
+		};
 		8DFCDB19250F4EBE00DBEE89 = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +104,7 @@
 				8D6A43F42510631F00A7CC20 /* LCSeeLocalFileViewController.swift */,
 				8D2FD24D25315BDA00008402 /* LCJsonViewController.swift */,
 				8DE8D97525C3F9C000BB7C23 /* LCUseAnnularViewController.swift */,
+				8D7FDF5F26088728004C54D2 /* UseTableViewHelper */,
 				8DFCDB2E250F4EC200DBEE89 /* Assets.xcassets */,
 				8DFCDB30250F4EC200DBEE89 /* LaunchScreen.storyboard */,
 				8DFCDB33250F4EC200DBEE89 /* Info.plist */,
@@ -126,6 +140,7 @@
 				8DFCDB1E250F4EBE00DBEE89 /* Sources */,
 				8DFCDB1F250F4EBE00DBEE89 /* Frameworks */,
 				8DFCDB20250F4EBE00DBEE89 /* Resources */,
+				842996288CD4D6A27AD1A43E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -182,6 +197,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		842996288CD4D6A27AD1A43E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LCSKitDemo/Pods-LCSKitDemo-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LCSKitDemo/Pods-LCSKitDemo-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LCSKitDemo/Pods-LCSKitDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		D5276A3CD71D29F7C340D1E6 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -213,6 +245,7 @@
 			files = (
 				8D6A44092510BAD900A7CC20 /* LCUrlEncodeViewController.swift in Sources */,
 				8DFCDB2A250F4EBE00DBEE89 /* ViewController.swift in Sources */,
+				8D7FDF642608877E004C54D2 /* LCATableViewCell.swift in Sources */,
 				8D6A440B2510BAF800A7CC20 /* LCCombineViewsViewController.swift in Sources */,
 				8DE8D97625C3F9C000BB7C23 /* LCUseAnnularViewController.swift in Sources */,
 				8DFCDB3C250F58DD00DBEE89 /* LCViewGestureViewController.swift in Sources */,
@@ -221,6 +254,7 @@
 				8DFCDB26250F4EBE00DBEE89 /* AppDelegate.swift in Sources */,
 				8D6A440D2510BB1700A7CC20 /* LCUseConstraintPurelyViewController.swift in Sources */,
 				8D6A43F52510631F00A7CC20 /* LCSeeLocalFileViewController.swift in Sources */,
+				8D7FDF612608875D004C54D2 /* LCUseTableViewHelperViewController.swift in Sources */,
 				8DDE0189258C9EE100B647B0 /* LCBaseViewController.swift in Sources */,
 				8D2FD24E25315BDA00008402 /* LCJsonViewController.swift in Sources */,
 			);

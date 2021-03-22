@@ -23,8 +23,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         case useArchiver = "归档、反归档"
         case json = "json使用"
         case annularView = "AnnularView使用"
+        case tableViewHelper = "LCSTableViewHelper使用"
     }
-    private let titles: [Title] = [.viewGesture, .urlEncodeDecode, .combineViews, .useConstraintPurely, .useUtility, .photos, .seeLocalFile, .useProxy, .useArchiver, .json, .annularView]
+    private let titles: [Title] = [.viewGesture, .urlEncodeDecode, .combineViews, .useConstraintPurely, .useUtility, .photos, .seeLocalFile, .useProxy, .useArchiver, .json, .annularView, .tableViewHelper]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,6 +79,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             vc = LCJsonViewController()
         case .annularView:
             vc = LCUseAnnularViewController()
+        case .tableViewHelper:
+            vc = LCUseTableViewHelperViewController()
         }
         navigationController?.pushViewController(vc, animated: true)
     }

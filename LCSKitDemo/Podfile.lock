@@ -6,6 +6,7 @@ PODS:
     - LCSKit/LocalFolder (= 0.0.1)
     - LCSKit/Photos (= 0.0.1)
     - LCSKit/Proxy (= 0.0.1)
+    - LCSKit/TableView (= 0.0.1)
     - LCSKit/UI (= 0.0.1)
     - LCSKit/Utility (= 0.0.1)
   - LCSKit/Cache (0.0.1):
@@ -16,19 +17,24 @@ PODS:
   - LCSKit/Photos (0.0.1):
     - LCSKit/Utility
   - LCSKit/Proxy (0.0.1)
+  - LCSKit/TableView (0.0.1):
+    - SnapKit
   - LCSKit/UI (0.0.1):
     - SnapKit
   - LCSKit/Utility (0.0.1)
+  - MJRefresh (3.5.0)
   - SnapKit (4.2.0)
   - YYCache (1.0.4)
 
 DEPENDENCIES:
   - LCSKit (from `../../LCSKit`)
+  - MJRefresh (= 3.5.0)
   - SnapKit (= 4.2.0)
   - YYCache (= 1.0.4)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
+    - MJRefresh
     - SnapKit
     - YYCache
 
@@ -37,10 +43,11 @@ EXTERNAL SOURCES:
     :path: "../../LCSKit"
 
 SPEC CHECKSUMS:
-  LCSKit: 7d19175074f49717fbcfead4dc279ef347da8697
+  LCSKit: 3f4a37352dd631a3cbbfc52895a22f9f0101a445
+  MJRefresh: 6afc955813966afb08305477dd7a0d9ad5e79a16
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
 
-PODFILE CHECKSUM: 95315df1e4ea472d8c8e9e4363e2c9e93e631e70
+PODFILE CHECKSUM: c4bd23cd33e0e69fb9141d8fa77ff874622e754c
 
 COCOAPODS: 1.9.3

@@ -57,6 +57,12 @@ Pod::Spec.new do |s|
     ss.dependency 'SnapKit'
   end
   
+  s.subspec 'TableView' do |ss|
+    ss.source_files = 'LCSKit/TableView/*.{swift}'
+    ss.frameworks = 'UIKit'
+    ss.dependency 'SnapKit'
+  end
+  
   s.subspec 'Utility' do |ss|
     ss.source_files = 'LCSKit/Utility/*.{swift}'
     ss.frameworks = 'UIKit', 'AdSupport', 'CoreTelephony'
