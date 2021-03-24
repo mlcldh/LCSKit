@@ -23,7 +23,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         case useArchiver = "归档、反归档"
         case json = "json使用"
         case annularView = "AnnularView使用"
-        case tableViewHelper = "LCSTableViewHelper使用"
+        case tableViewHelper = "LCSTableViewDelegate使用"
     }
     private let titles: [Title] = [.viewGesture, .urlEncodeDecode, .combineViews, .useConstraintPurely, .useUtility, .photos, .seeLocalFile, .useProxy, .useArchiver, .json, .annularView, .tableViewHelper]
     
@@ -39,7 +39,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     private func addTableView() {
         let tableView = UITableView()
         tableView.estimatedRowHeight = 44
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: NSStringFromClass(UITableViewCell.self))
+        tableView.lcs_register(cellClass: UITableViewCell.self)
         tableView.delegate = self
         tableView.dataSource = self
         view.addSubview(tableView)
@@ -90,7 +90,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let title = titles[indexPath.row].rawValue as String?, let cell = tableView.dequeueReusableCell(withIdentifier: NSStringFromClass(UITableViewCell.self)) else {
+        guard let title = titles[indexPath.row].rawValue as String?, let cell = tableView.lcs_dequeueReusableCell(withCellClass: UITableViewCell.self) else {
             return UITableViewCell()
         }
         cell.textLabel?.text = title

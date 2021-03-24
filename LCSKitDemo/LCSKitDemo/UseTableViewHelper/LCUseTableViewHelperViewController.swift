@@ -27,7 +27,7 @@ class LCUseTableViewHelperViewController: LCBaseViewController {
     private let totalCount = 40
     
     init() {
-        helper = LCSTableViewHelper(tableView: tableView)
+        helper = LCSTableViewHelper(tableView: tableView, cellClasses: [LCATableViewCell.self], refreshHeaderClass: MJRefreshGifHeader.self, refreshFooterClass: MJRefreshAutoGifFooter.self)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -49,6 +49,10 @@ class LCUseTableViewHelperViewController: LCBaseViewController {
         configHelper()
         
         tableView.mj_header?.beginRefreshing()
+        
+//        let cellClass: UITableViewCell.Type = LCATableViewCell.self
+//        let cell = cellClass.init()
+//        print("menglc cell = \(cell)")
     }
     // MARK: -
     func addRefreshSuccessButton() {
@@ -101,18 +105,8 @@ class LCUseTableViewHelperViewController: LCBaseViewController {
     }
     func addTableView() {
         tableView.backgroundColor = .lightGray
-        tableView.mj_header = MJRefreshGifHeader(refreshingBlock: { [weak self] in
-            guard let weakSelf = self else {
-                return
-            }
-            weakSelf.refresh()
-        })
-        tableView.mj_footer = MJRefreshAutoGifFooter(refreshingBlock: { [weak self] in
-            guard let weakSelf = self else {
-                return
-            }
-            weakSelf.loadMore()
-        })
+        
+        
         tableView.tableFooterView = UIView()
         view.addSubview(tableView)
         tableView.snp_makeConstraints { (make) in
@@ -122,32 +116,60 @@ class LCUseTableViewHelperViewController: LCBaseViewController {
     }
     // MARK: -
     func configHelper() {
+        helper.refreshHandler = { [weak self] in
+            guard let weakSelf = self else {
+                return
+            }
+            weakSelf.refresh()
+        }
+        helper.loadMoreHandler = { [weak self] in
+            guard let weakSelf = self else {
+                return
+            }
+            weakSelf.loadMore()
+        }
+        helper.configSectionHandler = { section in
+            section.cellClassHandler = { indexPath in
+                LCATableViewCell.self
+            }
+            section.configCellHandler = { cell, model, indexPath in
+                let learnRecordModel = model as! LCLearnRecordModel
+                cell.textLabel?.text = learnRecordModel.title
+            }
+            section.cellHeightHandler = { indexPath in
+                80
+            }
+            section.didSelectHandler = { indexPath in
+                print("menglc row DidSelect \(indexPath.section) \(indexPath.row)")
+            }
+        }
         helper.emptyViewHandler = {
             let label = UILabel()
             label.textAlignment = .center
             label.text = "空页面"
             return label
         }
-        helper.errorViewHandler = { error in
+        helper.errorViewHandler = { [weak self] error in
             let errorButton = UIButton()
-            errorButton.setTitle("错误页面", for: .normal)
-            errorButton.lcs_addActionForControlEvents(controlEvents: .touchUpInside) { [weak self] sender in
+            errorButton.setTitle(error.localizedFailureReason, for: .normal)
+            errorButton.lcs_addActionForControlEvents(controlEvents: .touchUpInside) { sender in
                 guard let weakSelf = self else {
                     return
                 }
                 weakSelf.tableView.mj_header?.beginRefreshing()
             }
+//            errorButton.isEnabled = false
             return errorButton
         }
     }
     func refresh() {
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) { [weak self] in
             guard let weakSelf = self else {
                 return
             }
             switch weakSelf.refreshType {
             case .empty:
-                weakSelf.refreshEmpty()
+                weakSelf.helper.handleRefreshSuccess(models: [], totalCount: 0)
             case .success:
                 weakSelf.refreshSuccess()
             case .error:
@@ -155,88 +177,33 @@ class LCUseTableViewHelperViewController: LCBaseViewController {
             }
         }
     }
-    func refreshEmpty() {
-        tableView.mj_header?.endRefreshing()
-        tableView.mj_footer?.isHidden = true
-        
-        helper.canShowEmptyView = true
-        helper.sections.removeAll()
-        helper.error = nil
-        tableView.reloadData()
-    }
     func refreshSuccess() {
-        tableView.mj_header?.endRefreshing()
-        tableView.mj_footer?.isHidden = true
+        var models: [Any] = []
         
-        helper.sections.removeAll()
-        helper.error = nil
-        
-        let section = LCSTableViewSection()
-        for index in 0..<20 {
-            let row = LCSTableViewRow()
-            row.cellClassHandler = { indexPath in
-                LCATableViewCell.self
-            }
-            row.configCellHandler = { cell, indexPath in
-                cell.textLabel?.text = "文字\(index)"
-            }
-            row.cellHeightHandler = { indexPath in
-                80
-            }
-            row.didSelectHandler = { indexPath in
-                print("menglc row DidSelect \(indexPath.section) \(indexPath.row)")
-            }
-            section.rows.append(row)
+        for _ in 0..<20 {
+            let model = LCLearnRecordModel()
+            model.title = "文字\(models.count)"
+            models.append(model)
         }
-        if section.rows.count >= totalCount {
-            tableView.mj_footer?.endRefreshingWithNoMoreData()
-        } else {
-            tableView.mj_footer?.endRefreshing()
-        }
-        tableView.mj_footer?.isHidden = false
-        helper.sections.append(section)
-        tableView.reloadData()
+        helper.handleRefreshSuccess(models: models, totalCount: totalCount)
     }
     func refreshError() {
-        tableView.mj_header?.endRefreshing()
-        tableView.mj_footer?.isHidden = true
-        
-        helper.sections.removeAll()
-        helper.error = NSError(domain: "com.mlc.networkError", code: -1, userInfo: [NSLocalizedFailureReasonErrorKey: "网络错误，请稍后重试."])
-        tableView.reloadData()
+        helper.handleLoadError(NSError(domain: "com.mlc.networkError", code: -1, userInfo: [NSLocalizedFailureReasonErrorKey: "网络错误，请稍后重试."]))
     }
     func loadMore() {
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) { [weak self] in
             guard let weakSelf = self else {
                 return
             }
-            weakSelf.helper.error = nil
+            var models: [Any] = []
             
-            let section = weakSelf.helper.sections[0]
-            for _ in 20..<40 {
-                let row = LCSTableViewRow()
-                row.cellClassHandler = { indexPath in
-                    LCATableViewCell.self
-                }
-                let rowIndex = section.rows.count
-                row.configCellHandler = { cell, indexPath in
-                    cell.textLabel?.text = "文字\(rowIndex)"
-                }
-                row.cellHeightHandler = { indexPath in
-                    50
-                }
-                row.didSelectHandler = { indexPath in
-                    print("menglc row DidSelect \(indexPath.section) \(indexPath.row)")
-                }
-                section.rows.append(row)
+            for _ in 0..<20 {
+                let model = LCLearnRecordModel()
+                model.title = "文字\(models.count)"
+                models.append(model)
             }
-            if section.rows.count >= weakSelf.totalCount {
-                weakSelf.tableView.mj_footer?.endRefreshingWithNoMoreData()
-            } else {
-                weakSelf.tableView.mj_footer?.endRefreshing()
-            }
-            weakSelf.helper.sections.append(section)
-            weakSelf.tableView.reloadData()
+            weakSelf.helper.handleLoadMoreSuccess(models: models, totalCount: weakSelf.totalCount)
         }
     }
+    
 }

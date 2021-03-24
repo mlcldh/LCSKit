@@ -2,162 +2,137 @@
 //  LCSTableViewHelper.swift
 //  LCSKit
 //
-//  Created by menglingchao on 2021/3/22.
-//  Copyright © 2021 MengLingChao. All rights reserved.
+//  Created by menglingchao on 2021/3/23.
+//  Copyright © 2021 ximalaya. All rights reserved.
 //
 
 import UIKit
+import MJRefresh
 
-
-/// UITableView代理助手
-public class LCSTableViewHelper: NSObject, UITableViewDelegate, UITableViewDataSource {
+/// TableView助手
+public class LCSTableViewHelper: NSObject {
     
-    public let tableView: UITableView
-    public var sections: [LCSTableViewSection] = []
+    private let tableViewDelegate: LCSTableViewDelegate
+    /// model数组
+    public var models: [Any] {
+        guard let section = tableViewDelegate.sections.first else {
+            return []
+        }
+        return section.models
+    }
+    /// 下拉刷新回调
+    public var refreshHandler:(() -> Void)?
+    /// 下载更多回调
+    public var loadMoreHandler:(() -> Void)?
+    /// 配置Section回调
+    public var configSectionHandler:((LCSTableViewSection) -> Void)?
     /// 空白页回调
-    public var emptyViewHandler:(() -> UIView)?
+    public var emptyViewHandler:(() -> UIView)? {
+        get {
+            tableViewDelegate.emptyViewHandler
+        }
+        set {
+            tableViewDelegate.emptyViewHandler = newValue
+        }
+    }
     /// 错误页回调
-    public var errorViewHandler:((Error) -> UIView)?
-    /// 是否在数据为空时显示空白页，默认是false，即不显示
-    public var canShowEmptyView = false
-    /// 网络请求错误
-    public var error: Error?
+    public var errorViewHandler:((NSError) -> UIView)? {
+        get {
+            tableViewDelegate.errorViewHandler
+        }
+        set {
+            tableViewDelegate.errorViewHandler = newValue
+        }
+    }
     
     deinit {
         print("menglc LCSTableViewHelper deinit")
     }
-    public init(tableView aTableView: UITableView) {
-        tableView = aTableView
+    public init(tableView aTableView: UITableView, cellClasses aCellClasses: [UITableViewCell.Type], refreshHeaderClass: MJRefreshHeader.Type, refreshFooterClass: MJRefreshFooter.Type) {
+        tableViewDelegate =  LCSTableViewDelegate(tableView: aTableView, cellClasses: aCellClasses)
         
         super.init()
         
-        tableView.delegate = self
-        tableView.dataSource = self
-    }
-    // MARK: - UITableViewDelegate
-    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        guard indexPath.section < sections.count else {
-            return 0
-        }
-        let section = sections[indexPath.section]
-        guard indexPath.row < section.rows.count else {
-            return 0
-        }
-        let row = section.rows[indexPath.row]
-        guard let cellHeightHandler = row.cellHeightHandler else {
-            return 0
-        }
-        let cellHeight = cellHeightHandler(indexPath)
-        return cellHeight
-    }
-    public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if error != nil {
-            return tableView.frame.height
-        }
-        if sections.isEmpty, canShowEmptyView {
-            return tableView.frame.height
-        }
-        guard section < sections.count else {
-            return 0
-        }
-        let aSection = sections[section]
-        if let headerHeightHandler = aSection.headerHeightHandler {
-            return headerHeightHandler(section)
-        }
-        return 0
-    }
-    public func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        guard section < sections.count else {
-            return 0
-        }
-        let aSection = sections[section]
-        if let footerHeightHandler = aSection.footerHeightHandler {
-            return footerHeightHandler(section)
-        }
-        return 0
-    }
-    public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if let aError = error, let aErrorViewHandler = errorViewHandler {
-            return aErrorViewHandler(aError)
-        }
-        if sections.isEmpty, canShowEmptyView, let aEmptyViewHandler = emptyViewHandler {
-            return aEmptyViewHandler()
-        }
-        guard section < sections.count else {
-            return nil
-        }
-        let aSection = sections[section]
-        if let headerViewHandler = aSection.headerViewHandler {
-            let headerView = headerViewHandler(section)
-            return headerView
-        }
-        return nil
-    }
-    public func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        guard section < sections.count else {
-            return nil
-        }
-        let aSection = sections[section]
-        if let footerViewHandler = aSection.footerViewHandler {
-            let footerView = footerViewHandler(section)
-            return footerView
-        }
-        return nil
-    }
-    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+        let header = refreshHeaderClass.init(refreshingBlock: { [weak self] in
+            guard let weakSelf = self, let refreshHandler = weakSelf.refreshHandler else {
+                return
+            }
+            refreshHandler()
+        })
+        aTableView.mj_header = header
         
-        guard indexPath.section < self.sections.count else {
-            return
-        }
-        let section = sections[indexPath.section]
-        if indexPath.row < section.rows.count {
-            return
-        }
-        let row = section.rows[indexPath.row]
-        if let didSelectHandler = row.didSelectHandler {
-            didSelectHandler(indexPath)
-        }
-    }
-    // MARK: - UITableViewDataSource
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard section < sections.count else {
-            return 0
-        }
-        let aSection = sections[section]
-        return aSection.rows.count
+        aTableView.mj_footer = refreshFooterClass.init(refreshingBlock: { [weak self] in
+            guard let weakSelf = self, let loadMoreHandler = weakSelf.loadMoreHandler else {
+                return
+            }
+            loadMoreHandler()
+        })
+        aTableView.mj_footer?.isHidden = true
     }
     
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public func handleRefreshSuccess(models: [Any], totalCount: Int) {
+        guard totalCount > 0 else {
+            handleEmpty()
+            return
+        }
+        tableViewDelegate.tableView.mj_header?.endRefreshing()
+        tableViewDelegate.tableView.mj_footer?.isHidden = true
         
-        guard indexPath.section < sections.count else {
-            return UITableViewCell()
-        }
-        let section = sections[indexPath.section]
-        guard indexPath.row < section.rows.count else {
-            return UITableViewCell()
-        }
-        let row = section.rows[indexPath.row]
-        guard let cellClassHandler = row.cellClassHandler else {
-            return UITableViewCell()
-        }
-        let cellClass = cellClassHandler(indexPath)
-        let reuseIdentifier = NSStringFromClass(cellClass)
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier) else {
-            let cell = cellClass.init()
-            if let configCellHandler = row.configCellHandler {
-                configCellHandler(cell, indexPath)
-            }
-            
-            return cell
-        }
-        if let configCellHandler = row.configCellHandler {
-            configCellHandler(cell, indexPath)
-        }
+        tableViewDelegate.sections.removeAll()
+        tableViewDelegate.error = nil
         
-        return cell
+        let section = LCSTableViewSection()
+        if let aConfigSectionHandler = configSectionHandler {
+            aConfigSectionHandler(section)
+        }
+        section.models += models
+        if section.models.count >= totalCount {
+            tableViewDelegate.tableView.mj_footer?.endRefreshingWithNoMoreData()
+        } else {
+            tableViewDelegate.tableView.mj_footer?.endRefreshing()
+        }
+        tableViewDelegate.tableView.mj_footer?.isHidden = false
+        tableViewDelegate.sections.append(section)
+        tableViewDelegate.tableView.reloadData()
     }
-    public func numberOfSections(in tableView: UITableView) -> Int {
-        sections.isEmpty ? 1 : sections.count
+    public func handleEmpty() {
+        tableViewDelegate.tableView.mj_header?.endRefreshing()
+        tableViewDelegate.tableView.mj_footer?.isHidden = true
+        
+        tableViewDelegate.canShowEmptyView = true
+        tableViewDelegate.sections.removeAll()
+        tableViewDelegate.error = nil
+        tableViewDelegate.tableView.reloadData()
+    }
+    public func handleLoadMoreSuccess(models: [Any], totalCount: Int) {
+        tableViewDelegate.error = nil
+        
+        let section = tableViewDelegate.sections[0]
+        section.models += models
+        if section.models.count >= totalCount {
+            tableViewDelegate.tableView.mj_footer?.endRefreshingWithNoMoreData()
+        } else {
+            tableViewDelegate.tableView.mj_footer?.endRefreshing()
+        }
+        tableViewDelegate.tableView.reloadData()
+    }
+    public func handleLoadError(_ error: NSError) {
+        tableViewDelegate.tableView.mj_header?.endRefreshing()
+        tableViewDelegate.tableView.mj_footer?.isHidden = true
+        
+        tableViewDelegate.sections.removeAll()
+        tableViewDelegate.error = error
+        tableViewDelegate.tableView.reloadData()
+    }
+    public func removeModel(at index:Int) {
+        tableViewDelegate.sections.first?.models.remove(at: index)
+    }
+    public func deleteRow(at index: Int, totalCount: Int) {
+        removeModel(at: index)
+        if totalCount <= 0 {
+            tableViewDelegate.tableView.reloadData()
+        } else {
+            tableViewDelegate.tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
+        }
     }
 }

@@ -18,6 +18,8 @@ PODS:
     - LCSKit/Utility
   - LCSKit/Proxy (0.0.1)
   - LCSKit/TableView (0.0.1):
+    - LCSKit/Category
+    - MJRefresh
     - SnapKit
   - LCSKit/UI (0.0.1):
     - SnapKit
@@ -43,7 +45,7 @@ EXTERNAL SOURCES:
     :path: "../../LCSKit"
 
 SPEC CHECKSUMS:
-  LCSKit: 3f4a37352dd631a3cbbfc52895a22f9f0101a445
+  LCSKit: 76bdb8d86e71077e44af47bc60f36678f82924b0
   MJRefresh: 6afc955813966afb08305477dd7a0d9ad5e79a16
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952

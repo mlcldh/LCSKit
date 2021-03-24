@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -17,7 +17,9 @@
 		8D6A44112510BB3300A7CC20 /* LCPhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6A44102510BB3300A7CC20 /* LCPhotosViewController.swift */; };
 		8D7FDF612608875D004C54D2 /* LCUseTableViewHelperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7FDF602608875D004C54D2 /* LCUseTableViewHelperViewController.swift */; };
 		8D7FDF642608877E004C54D2 /* LCATableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7FDF632608877E004C54D2 /* LCATableViewCell.swift */; };
+		8D99B8CA2609EB000095C164 /* LCBTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D99B8C92609EB000095C164 /* LCBTableViewCell.swift */; };
 		8DDE0189258C9EE100B647B0 /* LCBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDE0188258C9EE100B647B0 /* LCBaseViewController.swift */; };
+		8DE77816260B1504008C0D31 /* LCLearnRecordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE77815260B1504008C0D31 /* LCLearnRecordModel.swift */; };
 		8DE8D97625C3F9C000BB7C23 /* LCUseAnnularViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE8D97525C3F9C000BB7C23 /* LCUseAnnularViewController.swift */; };
 		8DFCDB26250F4EBE00DBEE89 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFCDB25250F4EBE00DBEE89 /* AppDelegate.swift */; };
 		8DFCDB2A250F4EBE00DBEE89 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFCDB29250F4EBE00DBEE89 /* ViewController.swift */; };
@@ -39,7 +41,9 @@
 		8D6A44102510BB3300A7CC20 /* LCPhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LCPhotosViewController.swift; sourceTree = "<group>"; };
 		8D7FDF602608875D004C54D2 /* LCUseTableViewHelperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LCUseTableViewHelperViewController.swift; sourceTree = "<group>"; };
 		8D7FDF632608877E004C54D2 /* LCATableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LCATableViewCell.swift; sourceTree = "<group>"; };
+		8D99B8C92609EB000095C164 /* LCBTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LCBTableViewCell.swift; sourceTree = "<group>"; };
 		8DDE0188258C9EE100B647B0 /* LCBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LCBaseViewController.swift; sourceTree = "<group>"; };
+		8DE77815260B1504008C0D31 /* LCLearnRecordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LCLearnRecordModel.swift; sourceTree = "<group>"; };
 		8DE8D97525C3F9C000BB7C23 /* LCUseAnnularViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LCUseAnnularViewController.swift; sourceTree = "<group>"; };
 		8DFCDB22250F4EBE00DBEE89 /* LCSKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LCSKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DFCDB25250F4EBE00DBEE89 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -67,6 +71,8 @@
 			children = (
 				8D7FDF602608875D004C54D2 /* LCUseTableViewHelperViewController.swift */,
 				8D7FDF632608877E004C54D2 /* LCATableViewCell.swift */,
+				8D99B8C92609EB000095C164 /* LCBTableViewCell.swift */,
+				8DE77815260B1504008C0D31 /* LCLearnRecordModel.swift */,
 			);
 			path = UseTableViewHelper;
 			sourceTree = "<group>";
@@ -247,7 +253,9 @@
 				8DFCDB2A250F4EBE00DBEE89 /* ViewController.swift in Sources */,
 				8D7FDF642608877E004C54D2 /* LCATableViewCell.swift in Sources */,
 				8D6A440B2510BAF800A7CC20 /* LCCombineViewsViewController.swift in Sources */,
+				8DE77816260B1504008C0D31 /* LCLearnRecordModel.swift in Sources */,
 				8DE8D97625C3F9C000BB7C23 /* LCUseAnnularViewController.swift in Sources */,
+				8D99B8CA2609EB000095C164 /* LCBTableViewCell.swift in Sources */,
 				8DFCDB3C250F58DD00DBEE89 /* LCViewGestureViewController.swift in Sources */,
 				8D6A44112510BB3300A7CC20 /* LCPhotosViewController.swift in Sources */,
 				8D6A440F2510BB2400A7CC20 /* LCUseUtilityViewController.swift in Sources */,
