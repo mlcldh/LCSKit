@@ -69,8 +69,14 @@ public class LCSTableViewHelper: NSObject {
         })
         aTableView.mj_footer?.isHidden = true
     }
-    
-    public func handleRefreshSuccess(models: [Any], totalCount: Int) {
+    public func handleRequestSuccess(models: [Any]?, totalCount: Int, isRefresh: Bool) {
+        if isRefresh {
+            handleRefreshSuccess(models: models, totalCount: totalCount)
+        } else {
+            handleLoadMoreSuccess(models: models, totalCount: totalCount)
+        }
+    }
+    public func handleRefreshSuccess(models: [Any]?, totalCount: Int) {
         guard totalCount > 0 else {
             handleEmpty()
             return
@@ -85,7 +91,9 @@ public class LCSTableViewHelper: NSObject {
         if let aConfigSectionHandler = configSectionHandler {
             aConfigSectionHandler(section)
         }
-        section.models += models
+        if let aModels = models {
+            section.models += aModels
+        }
         if section.models.count >= totalCount {
             tableViewDelegate.tableView.mj_footer?.endRefreshingWithNoMoreData()
         } else {
@@ -104,11 +112,13 @@ public class LCSTableViewHelper: NSObject {
         tableViewDelegate.error = nil
         tableViewDelegate.tableView.reloadData()
     }
-    public func handleLoadMoreSuccess(models: [Any], totalCount: Int) {
+    public func handleLoadMoreSuccess(models: [Any]?, totalCount: Int) {
         tableViewDelegate.error = nil
         
         let section = tableViewDelegate.sections[0]
-        section.models += models
+        if let aModels = models {
+            section.models += aModels
+        }
         if section.models.count >= totalCount {
             tableViewDelegate.tableView.mj_footer?.endRefreshingWithNoMoreData()
         } else {

@@ -129,17 +129,18 @@ class LCUseTableViewHelperViewController: LCBaseViewController {
             weakSelf.loadMore()
         }
         helper.configSectionHandler = { section in
-            section.cellClassHandler = { indexPath in
+            section.cellClassHandler = { indexPath, model in
                 LCATableViewCell.self
             }
-            section.configCellHandler = { cell, model, indexPath in
-                let learnRecordModel = model as! LCLearnRecordModel
-                cell.textLabel?.text = learnRecordModel.title
+            section.configCellHandler = { cell, indexPath, model in
+                if let learnRecordModel = model as? LCLearnRecordModel {
+                    cell.textLabel?.text = learnRecordModel.title
+                }
             }
-            section.cellHeightHandler = { indexPath in
+            section.cellHeightHandler = { indexPath, model in
                 80
             }
-            section.didSelectHandler = { indexPath in
+            section.didSelectHandler = { indexPath, model in
                 print("menglc row DidSelect \(indexPath.section) \(indexPath.row)")
             }
         }
@@ -199,7 +200,7 @@ class LCUseTableViewHelperViewController: LCBaseViewController {
             
             for _ in 0..<20 {
                 let model = LCLearnRecordModel()
-                model.title = "文字\(models.count)"
+                model.title = "文字\(weakSelf.helper.models.count + models.count)"
                 models.append(model)
             }
             weakSelf.helper.handleLoadMoreSuccess(models: models, totalCount: weakSelf.totalCount)

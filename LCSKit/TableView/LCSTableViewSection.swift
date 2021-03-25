@@ -16,19 +16,19 @@ public class LCSTableViewSection: NSObject {
     /// section头部高度回调
     public var headerHeightHandler:((Int) -> CGFloat)?
     /// section头部视图回调
-    public var headerViewHandler:((Int) -> UIView)?
+    public var headerViewHandler:((Int) -> UIView?)?
     /// section底部高度回调
     public var footerHeightHandler:((Int) -> CGFloat)?
     /// section底部视图回调
     public var footerViewHandler:((Int) -> UIView)?
     
     /// cell类回调
-    public var cellClassHandler:((IndexPath) -> UITableViewCell.Type)?
+    public var cellClassHandler:((IndexPath, Any) -> UITableViewCell.Type)?
     /// 配置cell回调
-    public var configCellHandler:((UITableViewCell, Any, IndexPath) -> Void)?
+    public var configCellHandler:((UITableViewCell, IndexPath, Any) -> Void)?
     /// cell高度回调
-    public var cellHeightHandler:((IndexPath) -> CGFloat)?
+    public var cellHeightHandler:((IndexPath, Any) -> CGFloat)?
     /// 点击cell回调
-    public var didSelectHandler:((IndexPath) -> Void)?
+    public var didSelectHandler:((IndexPath, Any) -> Void)?
     
 }

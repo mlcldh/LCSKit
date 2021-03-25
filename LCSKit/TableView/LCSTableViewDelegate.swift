@@ -37,13 +37,14 @@ public class LCSTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDat
     // MARK: - UITableViewDelegate
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         guard indexPath.section < sections.count else {
-            return 0
+            return tableView.rowHeight
         }
         let section = sections[indexPath.section]
-        guard let cellHeightHandler = section.cellHeightHandler else {
-            return 0
+        guard let cellHeightHandler = section.cellHeightHandler, indexPath.row < section.models.count else {
+            return tableView.rowHeight
         }
-        return cellHeightHandler(indexPath)
+        let model = section.models[indexPath.row]
+        return cellHeightHandler(indexPath, model)
     }
     public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if error != nil {
@@ -106,9 +107,11 @@ public class LCSTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDat
             return
         }
         let section = sections[indexPath.section]
-        if let didSelectHandler = section.didSelectHandler {
-            didSelectHandler(indexPath)
+        guard let didSelectHandler = section.didSelectHandler, indexPath.row < section.models.count else {
+            return
         }
+        let model = section.models[indexPath.row]
+        didSelectHandler(indexPath, model)
     }
     // MARK: - UITableViewDataSource
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -125,17 +128,22 @@ public class LCSTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDat
             return UITableViewCell()
         }
         let section = sections[indexPath.section]
+        guard indexPath.row < section.models.count else {
+            return UITableViewCell()
+        }
+        let model = section.models[indexPath.row]
+        
         var cellClass: UITableViewCell.Type
         if let cellClassHandler = section.cellClassHandler {
-            cellClass = cellClassHandler(indexPath)
+            cellClass = cellClassHandler(indexPath, model)
         } else {
             cellClass = UITableViewCell.self
         }
         guard let cell = tableView.lcs_dequeueReusableCell(withCellClass: cellClass) else {
             return UITableViewCell()
         }
-        if indexPath.row < section.models.count, let configCellHandler = section.configCellHandler {
-            configCellHandler(cell, section.models[indexPath.row], indexPath)
+        if let configCellHandler = section.configCellHandler {
+            configCellHandler(cell, indexPath, model)
         }
         return cell
     }
