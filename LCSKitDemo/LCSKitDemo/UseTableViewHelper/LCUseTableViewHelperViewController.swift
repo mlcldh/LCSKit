@@ -24,7 +24,7 @@ class LCUseTableViewHelperViewController: LCBaseViewController {
     private let tableView = UITableView()
     private let helper: LCSTableViewHelper
     private var refreshType = RefreshType.empty
-    private let totalCount = 40
+    private var totalCount = 40
     
     init() {
         helper = LCSTableViewHelper(tableView: tableView, cellClasses: [LCATableViewCell.self], refreshHeaderClass: MJRefreshGifHeader.self, refreshFooterClass: MJRefreshAutoGifFooter.self)
@@ -128,7 +128,10 @@ class LCUseTableViewHelperViewController: LCBaseViewController {
             }
             weakSelf.loadMore()
         }
-        helper.configSectionHandler = { section in
+        helper.configSectionHandler = { [weak self] section in
+            guard let weakSelf = self else {
+                return
+            }
             section.cellClassHandler = { indexPath, model in
                 LCATableViewCell.self
             }
@@ -142,6 +145,13 @@ class LCUseTableViewHelperViewController: LCBaseViewController {
             }
             section.didSelectHandler = { indexPath, model in
                 print("menglc row DidSelect \(indexPath.section) \(indexPath.row)")
+            }
+            section.editingStyleHandler = { indexPath, model in
+                .delete
+            }
+            section.commitEditingStyleHandler = { editingStyle, indexPath, model in
+                weakSelf.totalCount -= 1
+                weakSelf.helper.deleteRow(at: indexPath.row, totalCount: weakSelf.totalCount)
             }
         }
         helper.emptyViewHandler = {

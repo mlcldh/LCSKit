@@ -113,6 +113,17 @@ public class LCSTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDat
         let model = section.models[indexPath.row]
         didSelectHandler(indexPath, model)
     }
+    public func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        guard indexPath.section < sections.count else {
+            return .none
+        }
+        let section = sections[indexPath.section]
+        guard let editingStyleHandler = section.editingStyleHandler, indexPath.row < section.models.count else {
+            return .none
+        }
+        let model = section.models[indexPath.row]
+        return editingStyleHandler(indexPath, model)
+    }
     // MARK: - UITableViewDataSource
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard section < sections.count else {
@@ -149,5 +160,16 @@ public class LCSTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDat
     }
     public func numberOfSections(in tableView: UITableView) -> Int {
         sections.isEmpty ? 1 : sections.count
+    }
+    public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        guard indexPath.section < sections.count else {
+            return
+        }
+        let section = sections[indexPath.section]
+        guard let commitEditingStyleHandler = section.commitEditingStyleHandler, indexPath.row < section.models.count else {
+            return
+        }
+        let model = section.models[indexPath.row]
+        commitEditingStyleHandler(editingStyle, indexPath, model)
     }
 }

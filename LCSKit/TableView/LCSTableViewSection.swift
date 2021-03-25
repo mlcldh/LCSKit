@@ -30,5 +30,8 @@ public class LCSTableViewSection: NSObject {
     public var cellHeightHandler:((IndexPath, Any) -> CGFloat)?
     /// 点击cell回调
     public var didSelectHandler:((IndexPath, Any) -> Void)?
-    
+    /// 编辑样式回调
+    public var editingStyleHandler:((IndexPath, Any) -> UITableViewCell.EditingStyle)?
+    /// 提交编辑回调
+    public var commitEditingStyleHandler:((UITableViewCell.EditingStyle, IndexPath, Any) -> Void)?
 }
