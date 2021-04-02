@@ -146,6 +146,32 @@ class LCUseTableViewHelperViewController: LCBaseViewController {
             section.didSelectHandler = { indexPath, model in
                 print("menglc row DidSelect \(indexPath.section) \(indexPath.row)")
             }
+            section.titleForDeleteConfirmationButtonHandler = { indexPath, model in
+                "删除"
+            }
+            section.editActionsHandler = { indexPath, model in
+                var editActions:[UITableViewRowAction] = []
+                
+                let unreadAction = UITableViewRowAction(style: .default, title: "标位未读") { (tableViewRowAction, indexPath2) in
+                    print("menglc 标位未读")
+                }
+                unreadAction.backgroundColor = .darkGray
+                editActions.append(unreadAction)
+                
+                let notShowAction = UITableViewRowAction(style: .default, title: "不显示") { (tableViewRowAction, indexPath2) in
+                    print("menglc 不显示")
+                }
+                notShowAction.backgroundColor = .systemOrange
+                editActions.insert(notShowAction, at: 0)
+                
+                let deleteAction = UITableViewRowAction(style: .destructive, title: "删除") { (tableViewRowAction, indexPath2) in
+                    weakSelf.totalCount -= 1
+                    weakSelf.helper.deleteRow(at: indexPath.row, totalCount: weakSelf.totalCount)
+                }
+                editActions.insert(deleteAction, at: 0)
+                
+                return editActions
+            }
             section.editingStyleHandler = { indexPath, model in
                 .delete
             }

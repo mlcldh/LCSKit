@@ -124,6 +124,41 @@ public class LCSTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDat
         let model = section.models[indexPath.row]
         return editingStyleHandler(indexPath, model)
     }
+    public func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        guard indexPath.section < sections.count else {
+            return nil
+        }
+        let section = sections[indexPath.section]
+        guard let titleForDeleteConfirmationButtonHandler = section.titleForDeleteConfirmationButtonHandler, indexPath.row < section.models.count else {
+            return nil
+        }
+        let model = section.models[indexPath.row]
+        return titleForDeleteConfirmationButtonHandler(indexPath, model)
+    }
+    public func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        guard indexPath.section < sections.count else {
+            return nil
+        }
+        let section = sections[indexPath.section]
+        guard let editActionsHandler = section.editActionsHandler, indexPath.row < section.models.count else {
+            return nil
+        }
+        let model = section.models[indexPath.row]
+        return editActionsHandler(indexPath, model)
+    }
+//    @available(iOS 11.0, *)
+//    public func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+//        guard indexPath.section < sections.count else {
+//            return nil
+//        }
+//        let section = sections[indexPath.section]
+//        guard let leadingSwipeActionsConfigurationHandler = section.leadingSwipeActionsConfigurationHandler, indexPath.row < section.models.count else {
+//            return nil
+//        }
+//        return nil
+//        let model = section.models[indexPath.row]
+//        return leadingSwipeActionsConfigurationHandler(indexPath, model)
+//    }
     // MARK: - UITableViewDataSource
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard section < sections.count else {

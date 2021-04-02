@@ -59,15 +59,27 @@ public class LCSDeviceUtility: NSObject {
     public class func currentRadioAccessTechnology() -> String {
         ""
     }
+    /// 电池状态
+    func batteryStauts() -> UIDevice.BatteryState {
+        UIDevice.current.batteryState
+    }
+    /// 电池电量
+    func batteryLevel() -> Float {
+        UIDevice.current.batteryLevel
+    }
+    /// 总内存大小
+    func totalMemorySize() -> UInt64 {
+        ProcessInfo.processInfo.physicalMemory
+    }
     /**安全区域，iOS 11以下的返回UIEdgeInsetsMake(20, 0, 0, 0)*/
     public class func safeAreaInsets() -> UIEdgeInsets {
-        guard #available(iOS 11, *), let window = UIApplication.shared.delegate?.window as? UIWindow, let insets = window.safeAreaInsets as? UIEdgeInsets, insets.top > 20 else {
+        guard #available(iOS 11, *), let window = UIApplication.shared.delegate?.window as? UIWindow else {
+            return UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
+        }
+        let insets = window.safeAreaInsets
+        guard insets.top > 20 else {
             return UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
         }
         return insets
-    }
-    /**让UIApplication打开链接*/
-    public class func openURL(url: URL) {
-        
     }
 }
