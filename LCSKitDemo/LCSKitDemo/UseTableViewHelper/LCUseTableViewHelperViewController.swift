@@ -236,7 +236,7 @@ class LCUseTableViewHelperViewController: LCBaseViewController {
             
             for _ in 0..<20 {
                 let model = LCLearnRecordModel()
-                model.title = "文字\(weakSelf.helper.models.count + models.count)"
+                model.title = "文字\(models.count)"
                 models.append(model)
             }
             weakSelf.helper.handleLoadMoreSuccess(models: models, totalCount: weakSelf.totalCount)

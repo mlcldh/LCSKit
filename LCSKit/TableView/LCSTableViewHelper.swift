@@ -22,7 +22,7 @@ public class LCSTableViewHelper: NSObject {
     }
     /// 下拉刷新回调
     public var refreshHandler:(() -> Void)?
-    /// 下载更多回调
+    /// 加载更多回调
     public var loadMoreHandler:(() -> Void)?
     /// 配置Section回调
     public var configSectionHandler:((LCSTableViewSection) -> Void)?
@@ -53,13 +53,12 @@ public class LCSTableViewHelper: NSObject {
         
         super.init()
         
-        let header = refreshHeaderClass.init(refreshingBlock: { [weak self] in
+        aTableView.mj_header = refreshHeaderClass.init(refreshingBlock: { [weak self] in
             guard let weakSelf = self, let refreshHandler = weakSelf.refreshHandler else {
                 return
             }
             refreshHandler()
         })
-        aTableView.mj_header = header
         
         aTableView.mj_footer = refreshFooterClass.init(refreshingBlock: { [weak self] in
             guard let weakSelf = self, let loadMoreHandler = weakSelf.loadMoreHandler else {
