@@ -23,7 +23,7 @@ public class LCSTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDat
     public var error: NSError?
     
     deinit {
-        print("menglc LCSTableViewDelegate deinit")
+        print("menglc \(self) deinit")
     }
     public init(tableView aTableView: UITableView, cellClasses: [UITableViewCell.Type]) {
         tableView = aTableView
@@ -57,6 +57,9 @@ public class LCSTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDat
             return 0
         }
         let aSection = sections[section]
+        if aSection.models.isEmpty, canShowEmptyView {
+            return tableView.frame.height
+        }
         if let headerHeightHandler = aSection.headerHeightHandler {
             return headerHeightHandler(section)
         }
@@ -83,6 +86,9 @@ public class LCSTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDat
             return nil
         }
         let aSection = sections[section]
+        if aSection.models.isEmpty, canShowEmptyView, let aEmptyViewHandler = emptyViewHandler {
+            return aEmptyViewHandler()
+        }
         if let headerViewHandler = aSection.headerViewHandler {
             let headerView = headerViewHandler(section)
             return headerView

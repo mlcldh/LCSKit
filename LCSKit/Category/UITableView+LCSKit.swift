@@ -32,4 +32,29 @@ extension UITableView {
         }
         return view
     }
+    public func lcs_performBatchUpdates(_ updates: (() -> Void)?, completion: (() -> Void)? = nil) {
+        if #available(iOS 11.0, *) {
+            performBatchUpdates({
+                if let aUpdates = updates {
+                    aUpdates()
+                }
+            }, completion: { (isfinish) in
+                self.reloadData()
+                if let aCompletion = completion {
+                    aCompletion()
+                }
+            })
+        } else {
+            beginUpdates()
+            if let aUpdates = updates {
+                aUpdates()
+            }
+            endUpdates()
+            reloadData()
+            if let aCompletion = completion {
+                aCompletion()
+            }
+        }
+    }
+
 }

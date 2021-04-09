@@ -24,7 +24,7 @@ class LCUseTableViewHelperViewController: LCBaseViewController {
     private let tableView = UITableView()
     private let helper: LCSTableViewHelper
     private var refreshType = RefreshType.empty
-    private var totalCount = 40
+    private var totalCount = 0
     
     init() {
         helper = LCSTableViewHelper(tableView: tableView, cellClasses: [LCATableViewCell.self], refreshHeaderClass: MJRefreshGifHeader.self, refreshFooterClass: MJRefreshAutoGifFooter.self)
@@ -215,13 +215,17 @@ class LCUseTableViewHelperViewController: LCBaseViewController {
         }
     }
     func refreshSuccess() {
+        
         var models: [Any] = []
         
-        for _ in 0..<20 {
+        for _ in 0..<10 {
             let model = LCLearnRecordModel()
             model.title = "文字\(models.count)"
             models.append(model)
         }
+        
+        totalCount = 12
+        
         helper.handleRefreshSuccess(models: models, totalCount: totalCount)
     }
     func refreshError() {
@@ -234,7 +238,9 @@ class LCUseTableViewHelperViewController: LCBaseViewController {
             }
             var models: [Any] = []
             
-            for _ in 0..<20 {
+            let count = min(10, weakSelf.totalCount - weakSelf.helper.models.count)
+            
+            for _ in 0..<count {
                 let model = LCLearnRecordModel()
                 model.title = "文字\(models.count)"
                 models.append(model)

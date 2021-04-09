@@ -46,7 +46,7 @@ public class LCSTableViewHelper: NSObject {
     }
     
     deinit {
-        print("menglc LCSTableViewHelper deinit")
+        print("menglc \(self) deinit")
     }
     public init(tableView aTableView: UITableView, cellClasses aCellClasses: [UITableViewCell.Type], refreshHeaderClass: MJRefreshHeader.Type, refreshFooterClass: MJRefreshFooter.Type) {
         tableViewDelegate =  LCSTableViewDelegate(tableView: aTableView, cellClasses: aCellClasses)
@@ -80,6 +80,7 @@ public class LCSTableViewHelper: NSObject {
             handleEmpty()
             return
         }
+        tableViewDelegate.canShowEmptyView = true
         tableViewDelegate.tableView.mj_header?.endRefreshing()
         tableViewDelegate.tableView.mj_footer?.isHidden = true
         
@@ -141,7 +142,9 @@ public class LCSTableViewHelper: NSObject {
         if totalCount <= 0 {
             tableViewDelegate.tableView.reloadData()
         } else {
-            tableViewDelegate.tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
+            tableViewDelegate.tableView.lcs_performBatchUpdates {
+                self.tableViewDelegate.tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
+            }
         }
     }
 }
