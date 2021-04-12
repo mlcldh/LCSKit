@@ -114,6 +114,7 @@ public class LCSTableViewHelper: NSObject {
     }
     public func handleLoadMoreSuccess(models: [Any]?, totalCount: Int) {
         tableViewDelegate.error = nil
+        tableViewDelegate.canShowEmptyView = true
         
         let section = tableViewDelegate.sections[0]
         if let aModels = models {
@@ -144,6 +145,10 @@ public class LCSTableViewHelper: NSObject {
         } else {
             tableViewDelegate.tableView.lcs_performBatchUpdates {
                 self.tableViewDelegate.tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
+                if self.models.count == 0 {
+                    self.tableViewDelegate.canShowEmptyView = false
+                    self.tableViewDelegate.tableView.mj_footer?.beginRefreshing()
+                }
             }
         }
     }
