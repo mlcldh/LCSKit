@@ -10,7 +10,7 @@ import UIKit
 
 public class LCSImagePickerControllerManager: NSObject, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
     
-    weak var pickerViewController: UIImagePickerController?
+    unowned var pickerViewController: UIImagePickerController
     private let managerKey = "LCSImagePickerControllerManagerKey"
     
     var didFinishPickingMediaHandler:(([UIImagePickerController.InfoKey : Any]) -> Void)?

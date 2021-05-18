@@ -59,7 +59,7 @@ class LCPhotosViewController: LCBaseViewController {
         button.backgroundColor = .purple
         button.setTitleColor(.white, for: .normal)
         button.setTitle("请求相册权限并且显示UI", for: .normal)
-        button.lcs_addActionForControlEvents(controlEvents: .touchUpInside) { [weak self] sender in
+        button.lcs_addActionForControlEvents(controlEvents: .touchUpInside) { [unowned self] sender in
 //            LCSPhotoPermissionManager.req
         }
         view.addSubview(button)
@@ -103,7 +103,7 @@ class LCPhotosViewController: LCBaseViewController {
         button.backgroundColor = .purple
         button.setTitleColor(.white, for: .normal)
         button.setTitle("请求相机权限并且显示UI", for: .normal)
-        button.lcs_addActionForControlEvents(controlEvents: .touchUpInside) { [weak self] sender in
+        button.lcs_addActionForControlEvents(controlEvents: .touchUpInside) { [unowned self] sender in
 //            LCSPhotoPermissionManager.req
         }
         view.addSubview(button)
@@ -131,11 +131,8 @@ class LCPhotosViewController: LCBaseViewController {
         button.backgroundColor = .purple
         button.setTitleColor(.white, for: .normal)
         button.setTitle("选择照片", for: .normal)
-        button.lcs_addActionForControlEvents(controlEvents: .touchUpInside) { [weak self] sender in
-            guard let weakSelf = self else {
-                return
-            }
-            LCSImagePickerTool.pickSingleImage(inViewController: weakSelf) { image in
+        button.lcs_addActionForControlEvents(controlEvents: .touchUpInside) { [unowned self] sender in
+            LCSImagePickerTool.pickSingleImage(inViewController: self) { image in
                 print("menglc LCSImagePickerTool.pickSingleImage \(image)")
             }
         }

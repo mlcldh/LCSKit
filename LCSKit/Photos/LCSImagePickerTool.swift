@@ -19,15 +19,11 @@ public class LCSImagePickerTool: NSObject {
             if let availableMediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary) {
                 pickerController.mediaTypes = availableMediaTypes
             }
-            pickerController.mediaTypes = ["public.image"];
+            pickerController.mediaTypes = ["public.image"]
             pickerController.modalPresentationStyle = .fullScreen
             let pickerVCManager = LCSImagePickerControllerManager(pickerViewController: pickerController)
-        weak var weakPickerController = pickerController
-            pickerVCManager.didFinishPickingMediaHandler = { info in
-                guard let strongPickerController = weakPickerController else {
-                    return
-                }
-                strongPickerController.dismiss(animated: true, completion: nil)
+            pickerVCManager.didFinishPickingMediaHandler = {[unowned pickerController] info in
+                pickerController.dismiss(animated: true, completion: nil)
                 if let image = info[.originalImage] as? UIImage, let aDidFinishPickingHandler = didFinishPickingHandler {
                     aDidFinishPickingHandler(image)
                 }
@@ -41,12 +37,8 @@ public class LCSImagePickerTool: NSObject {
         let pickerVC = PHPickerViewController(configuration: configuration)
         pickerVC.modalPresentationStyle = .fullScreen
         let pickerVCManager = LCSPHPickerViewControllerManager(pickerViewController: pickerVC)
-        weak var weakPickerVC = pickerVC
-        pickerVCManager.didFinishPickingHandler = { results in
-            guard let strongPickerVC = weakPickerVC else {
-                return
-            }
-            strongPickerVC.dismiss(animated: true, completion: nil)
+        pickerVCManager.didFinishPickingHandler = {[unowned pickerVC] results in
+            pickerVC.dismiss(animated: true, completion: nil)
             guard results.count > 0, let result = results.first, result.itemProvider.canLoadObject(ofClass: UIImage.self) else {
                 return
             }

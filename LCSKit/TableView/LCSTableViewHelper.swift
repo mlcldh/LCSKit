@@ -53,15 +53,15 @@ public class LCSTableViewHelper: NSObject {
         
         super.init()
         
-        aTableView.mj_header = refreshHeaderClass.init(refreshingBlock: { [weak self] in
-            guard let weakSelf = self, let refreshHandler = weakSelf.refreshHandler else {
+        aTableView.mj_header = refreshHeaderClass.init(refreshingBlock: { [unowned self] in
+            guard let refreshHandler = self.refreshHandler else {
                 return
             }
             refreshHandler()
         })
         
-        aTableView.mj_footer = refreshFooterClass.init(refreshingBlock: { [weak self] in
-            guard let weakSelf = self, let loadMoreHandler = weakSelf.loadMoreHandler else {
+        aTableView.mj_footer = refreshFooterClass.init(refreshingBlock: { [unowned self] in
+            guard let loadMoreHandler = self.loadMoreHandler else {
                 return
             }
             loadMoreHandler()

@@ -12,7 +12,7 @@ import PhotosUI
 @available(iOS 14, *)
 public class LCSPHPickerViewControllerManager: NSObject, PHPickerViewControllerDelegate {
     
-    weak var pickerViewController: PHPickerViewController?
+    unowned var pickerViewController: PHPickerViewController
     private let managerKey = "LCSPHPickerViewControllerManagerKey"
     var didFinishPickingHandler:(([PHPickerResult]) -> Void)?
     

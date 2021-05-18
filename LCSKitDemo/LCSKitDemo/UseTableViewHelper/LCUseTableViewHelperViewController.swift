@@ -58,12 +58,9 @@ class LCUseTableViewHelperViewController: LCBaseViewController {
     func addRefreshSuccessButton() {
         refreshSuccessButton.backgroundColor = .purple
         refreshSuccessButton.setTitle("刷新成功", for: .normal)
-        refreshSuccessButton.lcs_addActionForControlEvents(controlEvents: .touchUpInside) { [weak self] _ in
-            guard let weakSelf = self else {
-                return
-            }
-            weakSelf.refreshType = .success
-            weakSelf.tableView.mj_header?.beginRefreshing()
+        refreshSuccessButton.lcs_addActionForControlEvents(controlEvents: .touchUpInside) { [unowned self] _ in
+            self.refreshType = .success
+            self.tableView.mj_header?.beginRefreshing()
         }
         view.addSubview(refreshSuccessButton)
         refreshSuccessButton.snp_makeConstraints { (make) in
@@ -74,12 +71,9 @@ class LCUseTableViewHelperViewController: LCBaseViewController {
     func addRefreshErrorButton() {
         refreshErrorButton.backgroundColor = .purple
         refreshErrorButton.setTitle("刷新失败", for: .normal)
-        refreshErrorButton.lcs_addActionForControlEvents(controlEvents: .touchUpInside) { [weak self] _ in
-            guard let weakSelf = self else {
-                return
-            }
-            weakSelf.refreshType = .error
-            weakSelf.tableView.mj_header?.beginRefreshing()
+        refreshErrorButton.lcs_addActionForControlEvents(controlEvents: .touchUpInside) { [unowned self] _ in
+            self.refreshType = .error
+            self.tableView.mj_header?.beginRefreshing()
         }
         view.addSubview(refreshErrorButton)
         refreshErrorButton.snp_makeConstraints { (make) in
@@ -90,12 +84,9 @@ class LCUseTableViewHelperViewController: LCBaseViewController {
     func addRefreshEmptyButton() {
         refreshEmptyButton.backgroundColor = .purple
         refreshEmptyButton.setTitle("空列表", for: .normal)
-        refreshEmptyButton.lcs_addActionForControlEvents(controlEvents: .touchUpInside) { [weak self] _ in
-            guard let weakSelf = self else {
-                return
-            }
-            weakSelf.refreshType = .empty
-            weakSelf.tableView.mj_header?.beginRefreshing()
+        refreshEmptyButton.lcs_addActionForControlEvents(controlEvents: .touchUpInside) { [unowned self] _ in
+            self.refreshType = .empty
+            self.tableView.mj_header?.beginRefreshing()
         }
         view.addSubview(refreshEmptyButton)
         refreshEmptyButton.snp_makeConstraints { (make) in
@@ -116,22 +107,13 @@ class LCUseTableViewHelperViewController: LCBaseViewController {
     }
     // MARK: -
     func configHelper() {
-        helper.refreshHandler = { [weak self] in
-            guard let weakSelf = self else {
-                return
-            }
-            weakSelf.refresh()
+        helper.refreshHandler = { [unowned self] in
+            self.refresh()
         }
-        helper.loadMoreHandler = { [weak self] in
-            guard let weakSelf = self else {
-                return
-            }
-            weakSelf.loadMore()
+        helper.loadMoreHandler = { [unowned self] in
+            self.loadMore()
         }
-        helper.configSectionHandler = { [weak self] section in
-            guard let weakSelf = self else {
-                return
-            }
+        helper.configSectionHandler = { [unowned self] section in
             section.cellClassHandler = { indexPath, model in
                 LCATableViewCell.self
             }
@@ -165,8 +147,8 @@ class LCUseTableViewHelperViewController: LCBaseViewController {
                 editActions.insert(notShowAction, at: 0)
                 
                 let deleteAction = UITableViewRowAction(style: .destructive, title: "删除") { (tableViewRowAction, indexPath2) in
-                    weakSelf.totalCount -= 1
-                    weakSelf.helper.deleteRow(at: indexPath.row, totalCount: weakSelf.totalCount)
+                    self.totalCount -= 1
+                    self.helper.deleteRow(at: indexPath.row, totalCount: self.totalCount)
                 }
                 editActions.insert(deleteAction, at: 0)
                 
@@ -176,8 +158,8 @@ class LCUseTableViewHelperViewController: LCBaseViewController {
                 .delete
             }
             section.commitEditingStyleHandler = { editingStyle, indexPath, model in
-                weakSelf.totalCount -= 1
-                weakSelf.helper.deleteRow(at: indexPath.row, totalCount: weakSelf.totalCount)
+                self.totalCount -= 1
+                self.helper.deleteRow(at: indexPath.row, totalCount: self.totalCount)
             }
         }
         helper.emptyViewHandler = {
@@ -186,31 +168,25 @@ class LCUseTableViewHelperViewController: LCBaseViewController {
             label.text = "空页面"
             return label
         }
-        helper.errorViewHandler = { [weak self] error in
+        helper.errorViewHandler = { [unowned self] error in
             let errorButton = UIButton()
             errorButton.setTitle(error.localizedFailureReason, for: .normal)
             errorButton.lcs_addActionForControlEvents(controlEvents: .touchUpInside) { sender in
-                guard let weakSelf = self else {
-                    return
-                }
-                weakSelf.tableView.mj_header?.beginRefreshing()
+                self.tableView.mj_header?.beginRefreshing()
             }
 //            errorButton.isEnabled = false
             return errorButton
         }
     }
     func refresh() {
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) { [weak self] in
-            guard let weakSelf = self else {
-                return
-            }
-            switch weakSelf.refreshType {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) { [unowned self] in
+            switch self.refreshType {
             case .empty:
-                weakSelf.helper.handleRefreshSuccess(models: [], totalCount: 0)
+                self.helper.handleRefreshSuccess(models: [], totalCount: 0)
             case .success:
-                weakSelf.refreshSuccess()
+                self.refreshSuccess()
             case .error:
-                weakSelf.refreshError()
+                self.refreshError()
             }
         }
     }
@@ -232,20 +208,17 @@ class LCUseTableViewHelperViewController: LCBaseViewController {
         helper.handleLoadError(NSError(domain: "com.mlc.networkError", code: -1, userInfo: [NSLocalizedFailureReasonErrorKey: "网络错误，请稍后重试."]))
     }
     func loadMore() {
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) { [weak self] in
-            guard let weakSelf = self else {
-                return
-            }
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) { [unowned self] in
             var models: [Any] = []
             
-            let count = min(10, weakSelf.totalCount - weakSelf.helper.models.count)
+            let count = min(10, self.totalCount - self.helper.models.count)
             
             for _ in 0..<count {
                 let model = LCLearnRecordModel()
                 model.title = "文字\(models.count)"
                 models.append(model)
             }
-            weakSelf.helper.handleLoadMoreSuccess(models: models, totalCount: weakSelf.totalCount)
+            self.helper.handleLoadMoreSuccess(models: models, totalCount: self.totalCount)
         }
     }
     
