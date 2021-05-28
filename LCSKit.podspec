@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/mlcldh/LCSKit.git", :tag => s.version.to_s }
 #  s.source_files = "LCSKit"
   s.module_name   = 'LCSKit'
-  s.source_files = 'LCSKit/LCSKit.h'
+  s.source_files = 'LCSKit/LCSKit.swift'
   s.swift_version = '5.3'
   
   s.requires_arc = true
@@ -43,6 +43,7 @@ Pod::Spec.new do |s|
   
   s.subspec 'LocalFolder' do |ss|
     ss.source_files = 'LCSKit/LocalFolder/*.{swift}'
+    ss.dependency 'SnapKit'
     ss.frameworks = 'UIKit'
   end
   

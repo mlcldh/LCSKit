@@ -13,7 +13,8 @@ PODS:
     - YYCache
   - LCSKit/Category (0.0.1)
   - LCSKit/Constant (0.0.1)
-  - LCSKit/LocalFolder (0.0.1)
+  - LCSKit/LocalFolder (0.0.1):
+    - SnapKit
   - LCSKit/Photos (0.0.1):
     - LCSKit/Utility
   - LCSKit/Proxy (0.0.1)
@@ -45,11 +46,11 @@ EXTERNAL SOURCES:
     :path: "../../LCSKit"
 
 SPEC CHECKSUMS:
-  LCSKit: 76bdb8d86e71077e44af47bc60f36678f82924b0
+  LCSKit: c1fd820a1d665243a495c3ba0d2dca0daae427aa
   MJRefresh: 6afc955813966afb08305477dd7a0d9ad5e79a16
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
 
 PODFILE CHECKSUM: c4bd23cd33e0e69fb9141d8fa77ff874622e754c
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.10.1
