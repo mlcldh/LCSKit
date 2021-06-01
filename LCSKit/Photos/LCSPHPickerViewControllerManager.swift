@@ -9,6 +9,7 @@
 import UIKit
 import PhotosUI
 
+#if !targetEnvironment(macCatalyst)
 @available(iOS 14, *)
 public class LCSPHPickerViewControllerManager: NSObject, PHPickerViewControllerDelegate {
     
@@ -36,3 +37,4 @@ public class LCSPHPickerViewControllerManager: NSObject, PHPickerViewControllerD
         objc_setAssociatedObject(pickerViewController as Any, managerKey, nil, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
     }
 }
+#endif

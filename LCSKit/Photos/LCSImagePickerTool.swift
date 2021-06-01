@@ -31,6 +31,7 @@ public class LCSImagePickerTool: NSObject {
             viewController.present(pickerController, animated: true, completion: nil)
             return
         }
+        #if !targetEnvironment(macCatalyst)
         var configuration = PHPickerConfiguration()
         configuration.filter = .images
         
@@ -54,5 +55,6 @@ public class LCSImagePickerTool: NSObject {
             }
         }
         viewController.present(pickerVC, animated: true, completion: nil)
+        #endif
     }
 }

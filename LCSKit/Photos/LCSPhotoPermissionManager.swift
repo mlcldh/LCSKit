@@ -47,6 +47,7 @@ public class LCSPhotoPermissionManager: NSObject {
             }
             return
         }
+        #if !targetEnvironment(macCatalyst)
         if #available(iOS 14, *) {
             let authorizationStatus = PHPhotoLibrary.authorizationStatus(for: .readWrite)
             switch authorizationStatus {
@@ -59,6 +60,7 @@ public class LCSPhotoPermissionManager: NSObject {
             }
             return
         }
+        #endif
         let authorizationStatus = PHPhotoLibrary.authorizationStatus()
         switch authorizationStatus {
         case .notDetermined:
@@ -85,10 +87,12 @@ public class LCSPhotoPermissionManager: NSObject {
             if let aHandler = handler {
                 aHandler(true, true, false, isNotDetermined)
             }
+        #if !targetEnvironment(macCatalyst)
         case .limited:
             if let aHandler = handler {
                 aHandler(true, true, true, isNotDetermined)
             }
+        #endif
         case .restricted:
             if let aHandler = handler {
                 aHandler(true, false, false, isNotDetermined)

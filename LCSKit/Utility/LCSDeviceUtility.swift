@@ -31,6 +31,10 @@ public class LCSDeviceUtility: NSObject {
     public class func appBuildVersion() -> String {
         ""
     }
+    /// 系统版本号
+    public class func systemVersion() -> String {
+        UIDevice.current.systemVersion
+    }
     /**app名字*/
     public class func appName() -> String {
         ""

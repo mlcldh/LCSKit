@@ -1,5 +1,5 @@
 //
-//  LCUseUtilityViewController.swift
+//  LCDeviceUtilityViewController.swift
 //  LCSKitDemo
 //
 //  Created by menglingchao on 2020/9/15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LCUseUtilityViewController: LCBaseViewController {
+class LCDeviceUtilityViewController: LCBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -16,7 +16,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         case urlEncodeDecode = "URL编解码"
         case combineViews = "批量连接视图"
         case useConstraintPurely = "直接调用系统方法操作约束"
-        case useUtility = "工具类MLCDeviceUtility"
+        case deviceUtility = "工具类MLCDeviceUtility"
+        case openUtility = "工具类MLCOpenUtility"
         case photos = "相册/相机相关"
         case seeLocalFile = "查看本地沙盒文件"
         case useProxy = "使用LCSProxy去除循环引用"
@@ -25,7 +26,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         case annularView = "AnnularView使用"
         case tableViewHelper = "LCSTableViewDelegate使用"
     }
-    private let titles: [Title] = [.viewGesture, .urlEncodeDecode, .combineViews, .useConstraintPurely, .useUtility, .photos, .seeLocalFile, .useProxy, .useArchiver, .json, .annularView, .tableViewHelper]
+    private let titles: [Title] = [.viewGesture, .urlEncodeDecode, .combineViews, .useConstraintPurely, .deviceUtility, .openUtility, .photos, .seeLocalFile, .useProxy, .useArchiver, .json, .annularView, .tableViewHelper]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,8 +66,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             vc = LCCombineViewsViewController()
         case .useConstraintPurely:
             vc = LCUseConstraintPurelyViewController()
-        case .useUtility:
-            vc = LCUseUtilityViewController()
+        case .deviceUtility:
+            vc = LCDeviceUtilityViewController()
+        case .openUtility:
+            vc = LCOpenUtilityViewController()
         case .photos:
             vc = LCPhotosViewController()
         case .seeLocalFile:
