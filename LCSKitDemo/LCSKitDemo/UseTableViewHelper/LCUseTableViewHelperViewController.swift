@@ -205,7 +205,7 @@ class LCUseTableViewHelperViewController: LCBaseViewController {
         helper.handleRefreshSuccess(models: models, totalCount: totalCount)
     }
     func refreshError() {
-        helper.handleLoadError(NSError(domain: "com.mlc.networkError", code: -1, userInfo: [NSLocalizedFailureReasonErrorKey: "网络错误，请稍后重试."]))
+        helper.handleLoadError(NSError(domain: "com.mlc.networkError", code: -1, userInfo: [NSLocalizedFailureReasonErrorKey: "网络错误，请稍后重试."]), isRefresh: true)
     }
     func loadMore() {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) { [unowned self] in

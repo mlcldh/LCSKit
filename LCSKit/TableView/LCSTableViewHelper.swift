@@ -116,18 +116,34 @@ public class LCSTableViewHelper: NSObject {
         tableViewDelegate.error = nil
         tableViewDelegate.canShowEmptyView = true
         
-        let section = tableViewDelegate.sections[0]
-        if let aModels = models {
-            section.models += aModels
+        if let section = tableViewDelegate.sections.first {
+            if let aModels = models {
+                section.models += aModels
+            }
+            if section.models.count >= totalCount {
+                tableViewDelegate.tableView.mj_footer?.endRefreshingWithNoMoreData()
+            } else {
+                tableViewDelegate.tableView.mj_footer?.endRefreshing()
+            }
         }
-        if section.models.count >= totalCount {
-            tableViewDelegate.tableView.mj_footer?.endRefreshingWithNoMoreData()
-        } else {
-            tableViewDelegate.tableView.mj_footer?.endRefreshing()
-        }
+        
         tableViewDelegate.tableView.reloadData()
     }
-    public func handleLoadError(_ error: NSError) {
+    public func makeHeaderEndRefreshing() {
+        tableViewDelegate.tableView.mj_header?.endRefreshing()
+    }
+    public func makeFooterEndRefreshing() {
+        tableViewDelegate.tableView.mj_footer?.endRefreshing()
+    }
+    public func handleLoadError(_ error: NSError, isRefresh: Bool) {
+        guard isRefresh else {
+            makeFooterEndRefreshing()
+            return
+        }
+        guard models.count == 0 else {
+            makeHeaderEndRefreshing()
+            return
+        }
         tableViewDelegate.tableView.mj_header?.endRefreshing()
         tableViewDelegate.tableView.mj_footer?.isHidden = true
         
@@ -151,5 +167,17 @@ public class LCSTableViewHelper: NSObject {
                 }
             }
         }
+    }
+    public func insertRow(model: Any ,at index: Int) {
+//        tableViewDelegate.tableView.beginUpdates()
+        tableViewDelegate.sections.first?.models.insert(model, at: index)
+        tableViewDelegate.tableView.reloadData()
+//        tableViewDelegate.tableView.insertRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
+//        tableViewDelegate.tableView.endUpdates()
+    }
+    public func clearAllModels() {
+        tableViewDelegate.canShowEmptyView = false
+        tableViewDelegate.sections.removeAll()
+        tableViewDelegate.tableView.reloadData()
     }
 }

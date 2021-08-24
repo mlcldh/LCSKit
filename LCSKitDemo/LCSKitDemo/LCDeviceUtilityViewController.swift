@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import LCSKit
 
 class LCDeviceUtilityViewController: LCBaseViewController {
     
@@ -14,11 +15,16 @@ class LCDeviceUtilityViewController: LCBaseViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-                
+        
         getIdfaAndIdfv()
+        getMachine()
     }
     // MARK: -
     private func getIdfaAndIdfv() {
-        
+        print("menglc idfa \(LCSDeviceUtility.idfa())")
+        print("menglc identifierForVendor \(LCSDeviceUtility.identifierForVendor())")
+    }
+    private func getMachine() {
+        print("menglc idfa \(LCSDeviceUtility.machine())")
     }
 }
