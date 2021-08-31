@@ -9,7 +9,7 @@
 import UIKit
 
 /// UITableView代理实现
-public class LCSTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDataSource {
+open class LCSTableViewDelegate: NSObject, UITableViewDelegate, UITableViewDataSource {
     
     public let tableView: UITableView
     public var sections: [LCSTableViewSection] = []

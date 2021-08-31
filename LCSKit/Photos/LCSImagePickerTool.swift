@@ -12,26 +12,14 @@ import PhotosUI
 /**相册选择*/
 public class LCSImagePickerTool: NSObject {
     
-    @objc public static func pickSingleImage(inViewController viewController: UIViewController, didFinishPickingHandler:((UIImage) -> Void)?) {
+    public class func pickSingleImage(inViewController viewController: UIViewController, didFinishPickingHandler:((UIImage) -> Void)?) {
         guard #available(iOS 14, *) else {
-            let pickerController = UIImagePickerController()
-            pickerController.sourceType = .photoLibrary
-            if let availableMediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary) {
-                pickerController.mediaTypes = availableMediaTypes
-            }
-            pickerController.mediaTypes = ["public.image"]
-            pickerController.modalPresentationStyle = .fullScreen
-            let pickerVCManager = LCSImagePickerControllerManager(pickerViewController: pickerController)
-            pickerVCManager.didFinishPickingMediaHandler = {[unowned pickerController] info in
-                pickerController.dismiss(animated: true, completion: nil)
-                if let image = info[.originalImage] as? UIImage, let aDidFinishPickingHandler = didFinishPickingHandler {
-                    aDidFinishPickingHandler(image)
-                }
-            }
-            viewController.present(pickerController, animated: true, completion: nil)
+            useUIImagePickerControllerToPickSingleImage(inViewController: viewController, didFinishPickingHandler: didFinishPickingHandler)
             return
         }
-        #if !targetEnvironment(macCatalyst)
+        #if targetEnvironment(macCatalyst)
+        useUIImagePickerControllerToPickSingleImage(inViewController: viewController, didFinishPickingHandler: didFinishPickingHandler)
+        #else
         var configuration = PHPickerConfiguration()
         configuration.filter = .images
         
@@ -56,5 +44,22 @@ public class LCSImagePickerTool: NSObject {
         }
         viewController.present(pickerVC, animated: true, completion: nil)
         #endif
+    }
+    private class func useUIImagePickerControllerToPickSingleImage(inViewController viewController: UIViewController, didFinishPickingHandler:((UIImage) -> Void)?) {
+        let pickerController = UIImagePickerController()
+        pickerController.sourceType = .photoLibrary
+        if let availableMediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary) {
+            pickerController.mediaTypes = availableMediaTypes
+        }
+        pickerController.mediaTypes = ["public.image"]
+        pickerController.modalPresentationStyle = .fullScreen
+        let pickerVCManager = LCSImagePickerControllerManager(pickerViewController: pickerController)
+        pickerVCManager.didFinishPickingMediaHandler = {[unowned pickerController] info in
+            pickerController.dismiss(animated: true, completion: nil)
+            if let image = info[.originalImage] as? UIImage, let aDidFinishPickingHandler = didFinishPickingHandler {
+                aDidFinishPickingHandler(image)
+            }
+        }
+        viewController.present(pickerController, animated: true, completion: nil)
     }
 }

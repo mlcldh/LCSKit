@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+public class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     private enum Title: String {
         case viewGesture = "UIView、UIControl的手势事件"
@@ -24,11 +24,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         case useArchiver = "归档、反归档"
         case json = "json使用"
         case annularView = "AnnularView使用"
-        case tableViewHelper = "LCSTableViewDelegate使用"
+        case inheritBaseTableListViewController = "继承LCSBaseTableListViewController"
+        case inheritBaseTableListView = "继承LCSBaseTableListView"
+        case useProgressHUD = "使用LCSProgressHUD"
     }
-    private let titles: [Title] = [.viewGesture, .urlEncodeDecode, .combineViews, .useConstraintPurely, .deviceUtility, .openUtility, .photos, .seeLocalFile, .useProxy, .useArchiver, .json, .annularView, .tableViewHelper]
+    private let titles: [Title] = [.viewGesture, .urlEncodeDecode, .combineViews, .useConstraintPurely, .deviceUtility, .openUtility, .photos, .seeLocalFile, .useProxy, .useArchiver, .json, .annularView, .inheritBaseTableListViewController, .inheritBaseTableListView, .useProgressHUD]
     
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
@@ -49,7 +51,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     // MARK: - UITableViewDelegate
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
         guard let title = titles[indexPath.row] as Title? else {
@@ -82,17 +84,21 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             vc = LCJsonViewController()
         case .annularView:
             vc = LCUseAnnularViewController()
-        case .tableViewHelper:
-            vc = LCUseTableViewHelperViewController()
+        case .inheritBaseTableListViewController:
+            vc = LCSDemoTableListViewController()
+        case .inheritBaseTableListView:
+            vc = LCSUseBaseTableListViewController()
+        case .useProgressHUD:
+            vc = LCUseProgressHUDViewController()
         }
         navigationController?.pushViewController(vc, animated: true)
     }
     // MARK: - UITableViewDataSource
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         titles.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let title = titles[indexPath.row].rawValue as String?, let cell = tableView.lcs_dequeueReusableCell(withCellClass: UITableViewCell.self) else {
             return UITableViewCell()
         }

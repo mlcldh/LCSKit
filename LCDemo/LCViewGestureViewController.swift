@@ -23,7 +23,8 @@ class LCViewGestureViewController: LCBaseViewController {
     // MARK: -
     private func useLabelGesture() {
         let label = UILabel()
-        label.backgroundColor = .purple
+//        label.backgroundColor = .purple
+        label.backgroundColor = .lcs_color(hexString: "0084FF")
         label.textColor = .white
         label.textAlignment = .center
         label.text = "轻学堂"

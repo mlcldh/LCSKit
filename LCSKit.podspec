@@ -56,6 +56,7 @@ Pod::Spec.new do |s|
     ss.source_files = 'LCSKit/UI/*.{swift}'
     ss.frameworks = 'UIKit'
     ss.dependency 'SnapKit'
+    ss.dependency 'LCSKit/Category'
   end
   
   s.subspec 'TableView' do |ss|

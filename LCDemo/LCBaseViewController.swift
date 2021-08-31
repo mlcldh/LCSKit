@@ -19,5 +19,7 @@ class LCBaseViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         view.backgroundColor = .white
+        
+        title = "\(self.classForCoder)"
     }
 }

@@ -8,53 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		4A48DDAC1C51E31B6110A4E2 /* libPods-LCSKitDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08C5BF95173C8B25BCCA9C78 /* libPods-LCSKitDemo.a */; };
-		8D2FD24E25315BDA00008402 /* LCJsonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2FD24D25315BDA00008402 /* LCJsonViewController.swift */; };
-		8D6A43F52510631F00A7CC20 /* LCSeeLocalFileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6A43F42510631F00A7CC20 /* LCSeeLocalFileViewController.swift */; };
-		8D6A44092510BAD900A7CC20 /* LCUrlEncodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6A44082510BAD900A7CC20 /* LCUrlEncodeViewController.swift */; };
-		8D6A440B2510BAF800A7CC20 /* LCCombineViewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6A440A2510BAF800A7CC20 /* LCCombineViewsViewController.swift */; };
-		8D6A440D2510BB1700A7CC20 /* LCUseConstraintPurelyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6A440C2510BB1700A7CC20 /* LCUseConstraintPurelyViewController.swift */; };
-		8D6A440F2510BB2400A7CC20 /* LCDeviceUtilityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6A440E2510BB2400A7CC20 /* LCDeviceUtilityViewController.swift */; };
-		8D6A44112510BB3300A7CC20 /* LCPhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6A44102510BB3300A7CC20 /* LCPhotosViewController.swift */; };
-		8D7FDF612608875D004C54D2 /* LCUseTableViewHelperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7FDF602608875D004C54D2 /* LCUseTableViewHelperViewController.swift */; };
-		8D7FDF642608877E004C54D2 /* LCATableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7FDF632608877E004C54D2 /* LCATableViewCell.swift */; };
-		8D99B8CA2609EB000095C164 /* LCBTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D99B8C92609EB000095C164 /* LCBTableViewCell.swift */; };
-		8DB76D7B26665607004F5AFE /* LCOpenUtilityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB76D7A26665607004F5AFE /* LCOpenUtilityViewController.swift */; };
-		8DDE0189258C9EE100B647B0 /* LCBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDE0188258C9EE100B647B0 /* LCBaseViewController.swift */; };
-		8DE77816260B1504008C0D31 /* LCLearnRecordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE77815260B1504008C0D31 /* LCLearnRecordModel.swift */; };
-		8DE8D97625C3F9C000BB7C23 /* LCUseAnnularViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE8D97525C3F9C000BB7C23 /* LCUseAnnularViewController.swift */; };
 		8DFCDB26250F4EBE00DBEE89 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFCDB25250F4EBE00DBEE89 /* AppDelegate.swift */; };
-		8DFCDB2A250F4EBE00DBEE89 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFCDB29250F4EBE00DBEE89 /* ViewController.swift */; };
 		8DFCDB2F250F4EC200DBEE89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DFCDB2E250F4EC200DBEE89 /* Assets.xcassets */; };
 		8DFCDB32250F4EC200DBEE89 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DFCDB30250F4EC200DBEE89 /* LaunchScreen.storyboard */; };
-		8DFCDB3C250F58DD00DBEE89 /* LCViewGestureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFCDB3B250F58DD00DBEE89 /* LCViewGestureViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		08C5BF95173C8B25BCCA9C78 /* libPods-LCSKitDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LCSKitDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		39D075901404C84845F75428 /* Pods-LCSKitDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LCSKitDemo.debug.xcconfig"; path = "Target Support Files/Pods-LCSKitDemo/Pods-LCSKitDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		640063066A263237B156D052 /* Pods-LCSKitDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LCSKitDemo.release.xcconfig"; path = "Target Support Files/Pods-LCSKitDemo/Pods-LCSKitDemo.release.xcconfig"; sourceTree = "<group>"; };
-		8D2FD24D25315BDA00008402 /* LCJsonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LCJsonViewController.swift; sourceTree = "<group>"; };
-		8D6A43F42510631F00A7CC20 /* LCSeeLocalFileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LCSeeLocalFileViewController.swift; sourceTree = "<group>"; };
-		8D6A44082510BAD900A7CC20 /* LCUrlEncodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LCUrlEncodeViewController.swift; sourceTree = "<group>"; };
-		8D6A440A2510BAF800A7CC20 /* LCCombineViewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LCCombineViewsViewController.swift; sourceTree = "<group>"; };
-		8D6A440C2510BB1700A7CC20 /* LCUseConstraintPurelyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LCUseConstraintPurelyViewController.swift; sourceTree = "<group>"; };
-		8D6A440E2510BB2400A7CC20 /* LCDeviceUtilityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LCDeviceUtilityViewController.swift; sourceTree = "<group>"; };
-		8D6A44102510BB3300A7CC20 /* LCPhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LCPhotosViewController.swift; sourceTree = "<group>"; };
-		8D7FDF602608875D004C54D2 /* LCUseTableViewHelperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LCUseTableViewHelperViewController.swift; sourceTree = "<group>"; };
-		8D7FDF632608877E004C54D2 /* LCATableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LCATableViewCell.swift; sourceTree = "<group>"; };
-		8D99B8C92609EB000095C164 /* LCBTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LCBTableViewCell.swift; sourceTree = "<group>"; };
 		8DB76D0C2665DE74004F5AFE /* LCSKitDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LCSKitDemo.entitlements; sourceTree = "<group>"; };
-		8DB76D7A26665607004F5AFE /* LCOpenUtilityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LCOpenUtilityViewController.swift; sourceTree = "<group>"; };
-		8DDE0188258C9EE100B647B0 /* LCBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LCBaseViewController.swift; sourceTree = "<group>"; };
-		8DE77815260B1504008C0D31 /* LCLearnRecordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LCLearnRecordModel.swift; sourceTree = "<group>"; };
-		8DE8D97525C3F9C000BB7C23 /* LCUseAnnularViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LCUseAnnularViewController.swift; sourceTree = "<group>"; };
 		8DFCDB22250F4EBE00DBEE89 /* LCSKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LCSKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DFCDB25250F4EBE00DBEE89 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8DFCDB29250F4EBE00DBEE89 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8DFCDB2E250F4EC200DBEE89 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8DFCDB31250F4EC200DBEE89 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8DFCDB33250F4EC200DBEE89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8DFCDB3B250F58DD00DBEE89 /* LCViewGestureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LCViewGestureViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,17 +37,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8D7FDF5F26088728004C54D2 /* UseTableViewHelper */ = {
-			isa = PBXGroup;
-			children = (
-				8D7FDF602608875D004C54D2 /* LCUseTableViewHelperViewController.swift */,
-				8D7FDF632608877E004C54D2 /* LCATableViewCell.swift */,
-				8D99B8C92609EB000095C164 /* LCBTableViewCell.swift */,
-				8DE77815260B1504008C0D31 /* LCLearnRecordModel.swift */,
-			);
-			path = UseTableViewHelper;
-			sourceTree = "<group>";
-		};
 		8DFCDB19250F4EBE00DBEE89 = {
 			isa = PBXGroup;
 			children = (
@@ -103,19 +60,6 @@
 			children = (
 				8DB76D0C2665DE74004F5AFE /* LCSKitDemo.entitlements */,
 				8DFCDB25250F4EBE00DBEE89 /* AppDelegate.swift */,
-				8DFCDB29250F4EBE00DBEE89 /* ViewController.swift */,
-				8DDE0188258C9EE100B647B0 /* LCBaseViewController.swift */,
-				8DFCDB3B250F58DD00DBEE89 /* LCViewGestureViewController.swift */,
-				8D6A44082510BAD900A7CC20 /* LCUrlEncodeViewController.swift */,
-				8D6A440A2510BAF800A7CC20 /* LCCombineViewsViewController.swift */,
-				8D6A440C2510BB1700A7CC20 /* LCUseConstraintPurelyViewController.swift */,
-				8D6A440E2510BB2400A7CC20 /* LCDeviceUtilityViewController.swift */,
-				8DB76D7A26665607004F5AFE /* LCOpenUtilityViewController.swift */,
-				8D6A44102510BB3300A7CC20 /* LCPhotosViewController.swift */,
-				8D6A43F42510631F00A7CC20 /* LCSeeLocalFileViewController.swift */,
-				8D2FD24D25315BDA00008402 /* LCJsonViewController.swift */,
-				8DE8D97525C3F9C000BB7C23 /* LCUseAnnularViewController.swift */,
-				8D7FDF5F26088728004C54D2 /* UseTableViewHelper */,
 				8DFCDB2E250F4EC200DBEE89 /* Assets.xcassets */,
 				8DFCDB30250F4EC200DBEE89 /* LaunchScreen.storyboard */,
 				8DFCDB33250F4EC200DBEE89 /* Info.plist */,
@@ -254,23 +198,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D6A44092510BAD900A7CC20 /* LCUrlEncodeViewController.swift in Sources */,
-				8DFCDB2A250F4EBE00DBEE89 /* ViewController.swift in Sources */,
-				8D7FDF642608877E004C54D2 /* LCATableViewCell.swift in Sources */,
-				8D6A440B2510BAF800A7CC20 /* LCCombineViewsViewController.swift in Sources */,
-				8DE77816260B1504008C0D31 /* LCLearnRecordModel.swift in Sources */,
-				8DE8D97625C3F9C000BB7C23 /* LCUseAnnularViewController.swift in Sources */,
-				8D99B8CA2609EB000095C164 /* LCBTableViewCell.swift in Sources */,
-				8DFCDB3C250F58DD00DBEE89 /* LCViewGestureViewController.swift in Sources */,
-				8D6A44112510BB3300A7CC20 /* LCPhotosViewController.swift in Sources */,
-				8D6A440F2510BB2400A7CC20 /* LCDeviceUtilityViewController.swift in Sources */,
 				8DFCDB26250F4EBE00DBEE89 /* AppDelegate.swift in Sources */,
-				8DB76D7B26665607004F5AFE /* LCOpenUtilityViewController.swift in Sources */,
-				8D6A440D2510BB1700A7CC20 /* LCUseConstraintPurelyViewController.swift in Sources */,
-				8D6A43F52510631F00A7CC20 /* LCSeeLocalFileViewController.swift in Sources */,
-				8D7FDF612608875D004C54D2 /* LCUseTableViewHelperViewController.swift in Sources */,
-				8DDE0189258C9EE100B647B0 /* LCBaseViewController.swift in Sources */,
-				8D2FD24E25315BDA00008402 /* LCJsonViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,7 +9,7 @@
 import UIKit
 
 @available(iOS 2.0, *)
-public class LCSTableViewSection: NSObject {
+open class LCSTableViewSection: NSObject {
     
     /// model数组
     var models: [Any] = []

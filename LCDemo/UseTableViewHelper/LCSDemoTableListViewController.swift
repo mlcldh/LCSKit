@@ -1,5 +1,5 @@
 //
-//  LCUseTableViewHelperViewController.swift
+//  LCSDemoTableListViewController.swift
 //  LCSKitDemo
 //
 //  Created by menglingchao on 2021/3/22.
@@ -10,7 +10,8 @@ import UIKit
 import MJRefresh
 import LCSKit
 
-class LCUseTableViewHelperViewController: LCBaseViewController {
+/// 讲解继承LCSBaseTableListViewController
+class LCSDemoTableListViewController: LCSBaseTableListViewController {
     
     enum RefreshType {
         case empty
@@ -21,16 +22,14 @@ class LCUseTableViewHelperViewController: LCBaseViewController {
     private let refreshSuccessButton = UIButton()
     private let refreshErrorButton = UIButton()
     private let refreshEmptyButton = UIButton()
-    private let tableView = UITableView()
-    private let helper: LCSTableViewHelper
     private var refreshType = RefreshType.empty
-    private var totalCount = 0
     
-    init() {
-        helper = LCSTableViewHelper(tableView: tableView, cellClasses: [LCATableViewCell.self], refreshHeaderClass: MJRefreshGifHeader.self, refreshFooterClass: MJRefreshAutoGifFooter.self)
-        super.init(nibName: nil, bundle: nil)
+    deinit {
+        print("menglc deinit \(self)")
     }
-    
+    init() {
+        super.init(refreshHeaderClass: MJRefreshGifHeader.self, refreshFooterClass: MJRefreshAutoGifFooter.self, cellClasses: [LCATableViewCell.self])
+    }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -40,15 +39,19 @@ class LCUseTableViewHelperViewController: LCBaseViewController {
         
         // Do any additional setup after loading the view.
         
+        view.backgroundColor = .cyan
+        
+        title = "\(self.classForCoder)"
+        
+        tableView.snp_updateConstraints { make in
+            make.top.equalToSuperview().offset(200)
+        }
+        
         addRefreshSuccessButton()
         addRefreshErrorButton()
         addRefreshEmptyButton()
         
-        addTableView()
-        
-        configHelper()
-        
-        tableView.mj_header?.beginRefreshing()
+        refresh(isShowLoading: true)
         
 //        let cellClass: UITableViewCell.Type = LCATableViewCell.self
 //        let cell = cellClass.init()
@@ -60,7 +63,7 @@ class LCUseTableViewHelperViewController: LCBaseViewController {
         refreshSuccessButton.setTitle("刷新成功", for: .normal)
         refreshSuccessButton.lcs_addActionForControlEvents(controlEvents: .touchUpInside) { [unowned self] _ in
             self.refreshType = .success
-            self.tableView.mj_header?.beginRefreshing()
+            self.refresh(isShowLoading: true)
         }
         view.addSubview(refreshSuccessButton)
         refreshSuccessButton.snp_makeConstraints { (make) in
@@ -73,7 +76,7 @@ class LCUseTableViewHelperViewController: LCBaseViewController {
         refreshErrorButton.setTitle("刷新失败", for: .normal)
         refreshErrorButton.lcs_addActionForControlEvents(controlEvents: .touchUpInside) { [unowned self] _ in
             self.refreshType = .error
-            self.tableView.mj_header?.beginRefreshing()
+            self.refresh(isShowLoading: true)
         }
         view.addSubview(refreshErrorButton)
         refreshErrorButton.snp_makeConstraints { (make) in
@@ -86,7 +89,7 @@ class LCUseTableViewHelperViewController: LCBaseViewController {
         refreshEmptyButton.setTitle("空列表", for: .normal)
         refreshEmptyButton.lcs_addActionForControlEvents(controlEvents: .touchUpInside) { [unowned self] _ in
             self.refreshType = .empty
-            self.tableView.mj_header?.beginRefreshing()
+            self.refresh(isShowLoading: true)
         }
         view.addSubview(refreshEmptyButton)
         refreshEmptyButton.snp_makeConstraints { (make) in
@@ -94,25 +97,9 @@ class LCUseTableViewHelperViewController: LCBaseViewController {
             make.top.equalToSuperview().offset(100)
         }
     }
-    func addTableView() {
-        tableView.backgroundColor = .lightGray
-        
-        
-        tableView.tableFooterView = UIView()
-        view.addSubview(tableView)
-        tableView.snp_makeConstraints { (make) in
-            make.left.right.bottom.equalToSuperview()
-            make.top.equalToSuperview().offset(150)
-        }
-    }
     // MARK: -
-    func configHelper() {
-        helper.refreshHandler = { [unowned self] in
-            self.refresh()
-        }
-        helper.loadMoreHandler = { [unowned self] in
-            self.loadMore()
-        }
+    override func configHelper() {
+        super.configHelper()
         helper.configSectionHandler = { [unowned self] section in
             section.cellClassHandler = { indexPath, model in
                 LCATableViewCell.self
@@ -170,16 +157,21 @@ class LCUseTableViewHelperViewController: LCBaseViewController {
         }
         helper.errorViewHandler = { [unowned self] error in
             let errorButton = UIButton()
+            errorButton.setTitleColor(.systemBlue, for: .normal)
             errorButton.setTitle(error.localizedFailureReason, for: .normal)
             errorButton.lcs_addActionForControlEvents(controlEvents: .touchUpInside) { sender in
-                self.tableView.mj_header?.beginRefreshing()
+                self.refresh(isShowLoading: true)
             }
 //            errorButton.isEnabled = false
             return errorButton
         }
     }
-    func refresh() {
+    override func refresh(isShowLoading: Bool = false) {
+        if isShowLoading {
+            view.lcs_showLoadingHud()
+        }
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) { [unowned self] in
+            self.view.lcs_removeHud()
             switch self.refreshType {
             case .empty:
                 self.helper.handleRefreshSuccess(models: [], totalCount: 0)
@@ -207,7 +199,7 @@ class LCUseTableViewHelperViewController: LCBaseViewController {
     func refreshError() {
         helper.handleLoadError(NSError(domain: "com.mlc.networkError", code: -1, userInfo: [NSLocalizedFailureReasonErrorKey: "网络错误，请稍后重试."]), isRefresh: true)
     }
-    func loadMore() {
+    override func loadMore() {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) { [unowned self] in
             var models: [Any] = []
             

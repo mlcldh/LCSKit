@@ -67,6 +67,7 @@ public class LCSDeviceUtility: NSObject {
         }
         return true
     }
+    #if !targetEnvironment(macCatalyst)
     /// 运营商名字
     public class func carrierName() -> String {
         let networkInfo = CTTelephonyNetworkInfo()
@@ -90,6 +91,7 @@ public class LCSDeviceUtility: NSObject {
             return nil
         }
     }
+    #endif
     /// 电池状态
     func batteryStauts() -> UIDevice.BatteryState {
         UIDevice.current.batteryState

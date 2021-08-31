@@ -9,7 +9,8 @@ target:'LCSKitDemo'
 pod 'MJRefresh','3.5.0', :modular_headers => true
 pod 'SnapKit','4.2.0'
 pod 'YYCache', '1.0.4', :modular_headers => true
-pod 'LCSKit', :path => '../../LCSKit'
+pod 'LCSKit', :path => '../'
+pod 'LCDemo', :path => '../'
 
 #use_modular_headers!
 

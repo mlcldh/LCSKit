@@ -10,7 +10,7 @@ import UIKit
 import MJRefresh
 
 /// TableView助手
-public class LCSTableViewHelper: NSObject {
+open class LCSTableViewHelper: NSObject {
     
     private let tableViewDelegate: LCSTableViewDelegate
     /// model数组

@@ -91,8 +91,18 @@ extension UIView {
         }
     }
     /**移除firstItem是自己的某一些约束*/
-    public func lcs_removeConstraints(firstAttribute: NSLayoutConstraint.Attribute, secondItem: Any) {
-        
+    public func lcs_removeConstraints(firstAttribute: NSLayoutConstraint.Attribute, secondItem: UIView?) {
+        var installedView: UIView?
+        if secondItem != nil {
+            if let aSuperview = lcs_closestCommonSuperview(secondView: secondItem) {
+                installedView = aSuperview
+            }
+        } else if firstAttribute != .width, firstAttribute != .height {
+            installedView = superview
+        } else {
+            installedView = self
+        }
+        installedView?.lcs_removeConstraints(firstItem: self, firstAttribute: firstAttribute)
     }
     /**添加约束*/
     public func lcs_addConstraint(firstAttribute: NSLayoutConstraint.Attribute, relation: NSLayoutConstraint.Relation, secondItem: AnyObject?, secondAttribute: NSLayoutConstraint.Attribute, multiplier: CGFloat, constant: CGFloat) {
@@ -100,17 +110,36 @@ extension UIView {
         if #available(iOS 8, *) {
             constraint.isActive = true
         } else {
-            var superview = self
-            
-            if let secondView = secondItem as? UIView {
-                superview = lcs_closestCommonSuperview(secondView: secondView)
+            var installedView: UIView?
+            if let aSecondItem = secondItem as? UIView {
+                if let aSuperview = lcs_closestCommonSuperview(secondView: aSecondItem) {
+                    installedView = aSuperview
+                }
+            } else if firstAttribute != .width, firstAttribute != .height {
+                installedView = superview
+            } else {
+                installedView = self
             }
-            superview.addConstraint(constraint)
+            installedView?.addConstraint(constraint)
         }
     }
     /**返回离两个view最近的父视图*/
-    public func lcs_closestCommonSuperview(secondView: UIView?) -> UIView {
-        UIView()
+    public func lcs_closestCommonSuperview(secondView: UIView?) -> UIView? {
+        var closestCommonSuperview: UIView?
+        
+        var secondViewSuperview = secondView
+        while closestCommonSuperview == nil, secondViewSuperview != nil {
+            var firstViewSuperview: UIView? = self
+            while closestCommonSuperview == nil, firstViewSuperview != nil {
+                if secondViewSuperview == firstViewSuperview {
+                    closestCommonSuperview = secondViewSuperview
+                }
+                firstViewSuperview = firstViewSuperview?.superview
+            }
+            secondViewSuperview = secondViewSuperview?.superview
+        }
+        
+        return closestCommonSuperview
     }
     
     private class LCSViewTarget: NSObject {

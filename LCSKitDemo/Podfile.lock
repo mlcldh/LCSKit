@@ -1,4 +1,6 @@
 PODS:
+  - LCDemo (0.0.1):
+    - LCSKit
   - LCSKit (0.0.1):
     - LCSKit/Cache (= 0.0.1)
     - LCSKit/Category (= 0.0.1)
@@ -23,6 +25,7 @@ PODS:
     - MJRefresh
     - SnapKit
   - LCSKit/UI (0.0.1):
+    - LCSKit/Category
     - SnapKit
   - LCSKit/Utility (0.0.1)
   - MJRefresh (3.5.0)
@@ -30,7 +33,8 @@ PODS:
   - YYCache (1.0.4)
 
 DEPENDENCIES:
-  - LCSKit (from `../../LCSKit`)
+  - LCDemo (from `../`)
+  - LCSKit (from `../`)
   - MJRefresh (= 3.5.0)
   - SnapKit (= 4.2.0)
   - YYCache (= 1.0.4)
@@ -42,15 +46,18 @@ SPEC REPOS:
     - YYCache
 
 EXTERNAL SOURCES:
+  LCDemo:
+    :path: "../"
   LCSKit:
-    :path: "../../LCSKit"
+    :path: "../"
 
 SPEC CHECKSUMS:
-  LCSKit: c1fd820a1d665243a495c3ba0d2dca0daae427aa
+  LCDemo: 03b023b20db52f4364e9bab8fb9a45d1c3f5d88a
+  LCSKit: 84147693158ea28fbdec90ba90da71693bc57a58
   MJRefresh: 6afc955813966afb08305477dd7a0d9ad5e79a16
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
 
-PODFILE CHECKSUM: c4bd23cd33e0e69fb9141d8fa77ff874622e754c
+PODFILE CHECKSUM: 1c1c8984a06b763e2c99ff9cfc1b0f251763db96
 
-COCOAPODS: 1.10.1
+COCOAPODS: 1.10.2

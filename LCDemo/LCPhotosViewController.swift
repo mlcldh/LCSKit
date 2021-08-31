@@ -30,14 +30,11 @@ class LCPhotosViewController: LCBaseViewController {
         button.setTitleColor(.white, for: .normal)
         button.setTitle("请求相册权限", for: .normal)
         button.lcs_addActionForControlEvents(controlEvents: .touchUpInside) { sender in
-            LCSPhotoPermissionManager.requestPermissionWithSourceType(souceType: .photoLibrary) { (isSourceTypeAvailable, success, isLimited, isNotDetermined) in
-                if (!isSourceTypeAvailable) {
-                    print("当前设备没有相册功能")
-                    return
-                }
-                if (isNotDetermined) {
-                    print("相册权限之前还未处理")
-                }
+            LCSPhotoPermissionManager.requestPermissionWithSourceType(souceType: .photoLibrary) {
+                print("当前设备没有相册功能")
+            } isNotDeterminedHandler: {
+                print("相册权限之前还未处理")
+            } handler: { success, isLimited in
                 if (success) {
                     print("已经获得相册权限")
                     if (isLimited) {
@@ -59,9 +56,9 @@ class LCPhotosViewController: LCBaseViewController {
         button.backgroundColor = .purple
         button.setTitleColor(.white, for: .normal)
         button.setTitle("请求相册权限并且显示UI", for: .normal)
-        button.lcs_addActionForControlEvents(controlEvents: .touchUpInside) { [unowned self] sender in
+//        button.lcs_addActionForControlEvents(controlEvents: .touchUpInside) { [unowned self] sender in
 //            LCSPhotoPermissionManager.req
-        }
+//        }
         view.addSubview(button)
         button.snp_makeConstraints { (make) in
             make.left.equalToSuperview().offset(20)
@@ -74,14 +71,11 @@ class LCPhotosViewController: LCBaseViewController {
         button.setTitleColor(.white, for: .normal)
         button.setTitle("请求相机权限", for: .normal)
         button.lcs_addActionForControlEvents(controlEvents: .touchUpInside) { sender in
-            LCSPhotoPermissionManager.requestPermissionWithSourceType(souceType: .camera) { (isSourceTypeAvailable, success, isLimited, isNotDetermined) in
-                if (!isSourceTypeAvailable) {
-                    print("当前设备没有相机功能")
-                    return
-                }
-                if (isNotDetermined) {
-                    print("相机权限之前还未处理")
-                }
+            LCSPhotoPermissionManager.requestPermissionWithSourceType(souceType: .camera) {
+                print("当前设备没有相机功能")
+            } isNotDeterminedHandler: {
+                print("相机权限之前还未处理")
+            } handler: { success, isLimited in
                 if (success) {
                     print("已经获得相机权限")
                     if (isLimited) {
@@ -103,9 +97,9 @@ class LCPhotosViewController: LCBaseViewController {
         button.backgroundColor = .purple
         button.setTitleColor(.white, for: .normal)
         button.setTitle("请求相机权限并且显示UI", for: .normal)
-        button.lcs_addActionForControlEvents(controlEvents: .touchUpInside) { [unowned self] sender in
-//            LCSPhotoPermissionManager.req
-        }
+//        button.lcs_addActionForControlEvents(controlEvents: .touchUpInside) { [unowned self] sender in
+//            LCSPhotoPermissionManager.request
+//        }
         view.addSubview(button)
         button.snp_makeConstraints { (make) in
             make.left.equalToSuperview().offset(20)
