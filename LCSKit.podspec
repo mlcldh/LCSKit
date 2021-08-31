@@ -47,10 +47,10 @@ Pod::Spec.new do |s|
     ss.frameworks = 'UIKit'
   end
   
-  s.subspec 'Proxy' do |ss|
-    ss.source_files = 'LCSKit/Proxy/*.{swift}'
-    ss.frameworks = 'Foundation'
-  end
+#  s.subspec 'Proxy' do |ss|
+#    ss.source_files = 'LCSKit/Proxy/*.{swift}'
+#    ss.frameworks = 'Foundation'
+#  end
   
   s.subspec 'UI' do |ss|
     ss.source_files = 'LCSKit/UI/*.{swift}'
@@ -65,6 +65,7 @@ Pod::Spec.new do |s|
     ss.dependency 'SnapKit'
     ss.dependency 'MJRefresh'
     ss.dependency 'LCSKit/Category'
+    ss.dependency 'LCSKit/UI'
   end
   
   s.subspec 'Utility' do |ss|
