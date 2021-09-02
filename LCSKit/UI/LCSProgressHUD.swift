@@ -31,7 +31,6 @@ public class LCSProgressHUD: UIView {//@objcMembers
             annularView.layer.add(animation, forKey: "rotate")
         }
     }
-    public let annularWidth: CGFloat
     public let backgroundView = UIView()
     public let bezelView = UIView()
     public var bezelViewMaxWidthRate: CGFloat = 1 {
@@ -44,13 +43,14 @@ public class LCSProgressHUD: UIView {//@objcMembers
         }
     }
     public let annularView: LCSAnnularView
+    public let annularWidth: CGFloat
     public var annularViewTopMargin = 0 {
         didSet {
             guard type == .loading else {
                 return
             }
             annularView.snp_updateConstraints { make in
-                make.top.equalTo(annularViewTopMargin)
+                make.top.equalToSuperview().offset(annularViewTopMargin)
             }
         }
     }
@@ -110,14 +110,17 @@ public class LCSProgressHUD: UIView {//@objcMembers
         
         addBackgroundView()
         addBezelView()
-        addTitleLabel()
+        
         switch aType {
         case .toast:
+            addTitleLabel()
             titleLabel.snp_makeConstraints { make in
                 make.top.equalToSuperview()
             }
         case .loading:
             addAnnularView()
+            
+            addTitleLabel()
             titleLabel.snp_makeConstraints { make in
                 make.top.equalTo(annularView.snp_bottom).offset(5)
             }
@@ -174,7 +177,6 @@ public class LCSProgressHUD: UIView {//@objcMembers
             guard let hud = subview as? LCSProgressHUD else {
                 continue
             }
-            hud.hideDelayTimer = nil
             hud.removeFromSuperview()
         }
     }
