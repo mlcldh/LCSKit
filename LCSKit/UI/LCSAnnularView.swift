@@ -8,7 +8,7 @@
 
 import UIKit
 
-/**环形/饼形视图*/
+/// 环形/扇形视图
 public class LCSAnnularView: UIView {
     
     /// 环背景
@@ -21,8 +21,8 @@ public class LCSAnnularView: UIView {
     ///   - strokeThickness: 环宽度
     ///   - width: 宽度，height也使用width
     ///   - rounded: 是否是圆角，针对width、height不相等时
-    public convenience init(strokeThickness: CGFloat, width: CGFloat, rounded: Bool = true) {
-        self.init(strokeThickness: strokeThickness, width: width, height: width, rounded: rounded)
+    public convenience init(strokeThickness: CGFloat, width: CGFloat, oval: Bool = false) {
+        self.init(strokeThickness: strokeThickness, width: width, height: width, oval: oval)
     }
     
     /// 指定构造器
@@ -31,17 +31,17 @@ public class LCSAnnularView: UIView {
     ///   - width: 宽度
     ///   - height: 高度
     ///   - rounded: 是否是圆角，针对width、height不相等时
-    public init(strokeThickness: CGFloat, width: CGFloat, height: CGFloat, rounded: Bool = true) {
+    public init(strokeThickness: CGFloat, width: CGFloat, height: CGFloat, oval: Bool = false) {
         super.init(frame: CGRect(x: 0, y: 0, width: width, height: height))
         
         lineBackground.shapeLayer().lineWidth = strokeThickness
         lineBackground.shapeLayer().fillColor = UIColor.clear.cgColor
         lineBackground.shapeLayer().strokeColor = UIColor.lightGray.cgColor
         let path: UIBezierPath
-        if rounded {
-            path = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: width - strokeThickness, height: height - strokeThickness), cornerRadius: (min(width, height) - strokeThickness) / 2)
-        } else {
+        if oval {
             path = UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: width - strokeThickness, height: height - strokeThickness))
+        } else {
+            path = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: width - strokeThickness, height: height - strokeThickness), cornerRadius: (min(width, height) - strokeThickness) / 2)
         }
         lineBackground.shapeLayer().path = path.cgPath
         addSubview(lineBackground)

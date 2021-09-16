@@ -24,11 +24,12 @@ public class ViewController: UIViewController, UITableViewDelegate, UITableViewD
         case useArchiver = "归档、反归档"
         case json = "json使用"
         case annularView = "AnnularView使用"
+        case fanShaped = "FanShapedView使用"
         case inheritBaseTableListViewController = "继承LCSBaseTableListViewController"
         case inheritBaseTableListView = "继承LCSBaseTableListView"
         case useProgressHUD = "使用LCSProgressHUD"
     }
-    private let titles: [Title] = [.viewGesture, .urlEncodeDecode, .combineViews, .useConstraintPurely, .deviceUtility, .openUtility, .photos, .seeLocalFile, .useProxy, .useArchiver, .json, .annularView, .inheritBaseTableListViewController, .inheritBaseTableListView, .useProgressHUD]
+    private let titles: [Title] = [.viewGesture, .urlEncodeDecode, .combineViews, .useConstraintPurely, .deviceUtility, .openUtility, .photos, .seeLocalFile, .useProxy, .useArchiver, .json, .annularView, .fanShaped, .inheritBaseTableListViewController, .inheritBaseTableListView, .useProgressHUD]
     
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,6 +85,8 @@ public class ViewController: UIViewController, UITableViewDelegate, UITableViewD
             vc = LCJsonViewController()
         case .annularView:
             vc = LCUseAnnularViewController()
+        case .fanShaped:
+            vc = LCUseFanShapedViewController()
         case .inheritBaseTableListViewController:
             vc = LCSDemoTableListViewController()
         case .inheritBaseTableListView:

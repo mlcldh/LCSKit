@@ -53,7 +53,7 @@ class LCUseAnnularViewController: LCBaseViewController {
         let width: CGFloat = 200
         let height: CGFloat = 100
         
-        let annularView = LCSAnnularView(strokeThickness: 6, width: width, height: height, rounded: false)
+        let annularView = LCSAnnularView(strokeThickness: 6, width: width, height: height, oval: true)
         annularView.line.shapeLayer().strokeEnd = 0.3
         view.addSubview(annularView)
         annularView.snp_makeConstraints { (make) in
@@ -63,7 +63,7 @@ class LCUseAnnularViewController: LCBaseViewController {
             make.height.equalTo(height)
         }
     }
-    func useLCSAnnularView4() {//饼形图
+    func useLCSAnnularView4() {//扇形图
         let width: CGFloat = 100
         
         let annularView = LCSAnnularView(strokeThickness: width/2, width: width)

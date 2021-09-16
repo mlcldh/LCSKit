@@ -7,7 +7,6 @@ PODS:
     - LCSKit/Constant (= 0.0.1)
     - LCSKit/LocalFolder (= 0.0.1)
     - LCSKit/Photos (= 0.0.1)
-    - LCSKit/Proxy (= 0.0.1)
     - LCSKit/TableView (= 0.0.1)
     - LCSKit/UI (= 0.0.1)
     - LCSKit/Utility (= 0.0.1)
@@ -19,9 +18,9 @@ PODS:
     - SnapKit
   - LCSKit/Photos (0.0.1):
     - LCSKit/Utility
-  - LCSKit/Proxy (0.0.1)
   - LCSKit/TableView (0.0.1):
     - LCSKit/Category
+    - LCSKit/UI
     - MJRefresh
     - SnapKit
   - LCSKit/UI (0.0.1):
@@ -53,7 +52,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   LCDemo: 03b023b20db52f4364e9bab8fb9a45d1c3f5d88a
-  LCSKit: 84147693158ea28fbdec90ba90da71693bc57a58
+  LCSKit: 6545d282063436d4a251336480ad40c63082a225
   MJRefresh: 6afc955813966afb08305477dd7a0d9ad5e79a16
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
