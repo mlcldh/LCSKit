@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   
   s.name         = "LCDemo"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.summary      = "LCSKit的Demo。"
   
   s.homepage     = "https://github.com/mlcldh/LCSKit"
