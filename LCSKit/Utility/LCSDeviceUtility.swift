@@ -10,7 +10,7 @@ import UIKit
 import AdSupport
 import CoreTelephony
 
-/// 工具类
+/// 设备相关工具类
 public class LCSDeviceUtility: NSObject {
     
     /// app版本号
