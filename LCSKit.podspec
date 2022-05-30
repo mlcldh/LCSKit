@@ -31,13 +31,13 @@ Pod::Spec.new do |s|
     ss.frameworks = 'Foundation'
   end
   
-  s.subspec 'Category' do |ss|
-    ss.source_files = 'LCSKit/Category/*.{swift}'
+  s.subspec 'Constant' do |ss|
+    ss.source_files = 'LCSKit/Constant/*.{swift}'
     ss.frameworks = 'UIKit'
   end
   
-  s.subspec 'Constant' do |ss|
-    ss.source_files = 'LCSKit/Constant/*.{swift}'
+  s.subspec 'Extension' do |ss|
+    ss.source_files = 'LCSKit/Extension/*.{swift}'
     ss.frameworks = 'UIKit'
   end
   
@@ -52,11 +52,10 @@ Pod::Spec.new do |s|
 #    ss.frameworks = 'Foundation'
 #  end
   
-  s.subspec 'UI' do |ss|
-    ss.source_files = 'LCSKit/UI/*.{swift}'
-    ss.frameworks = 'UIKit'
-    ss.dependency 'SnapKit'
-    ss.dependency 'LCSKit/Category'
+  s.subspec 'Photos' do |ss|
+    ss.source_files = 'LCSKit/Photos/*.{swift}'
+    ss.frameworks = 'AVFoundation', 'Photos'
+    ss.dependency 'LCSKit/Utility'
   end
   
   s.subspec 'TableView' do |ss|
@@ -64,21 +63,22 @@ Pod::Spec.new do |s|
     ss.frameworks = 'UIKit'
     ss.dependency 'SnapKit'
     ss.dependency 'MJRefresh'
-    ss.dependency 'LCSKit/Category'
+    ss.dependency 'LCSKit/Extension'
     ss.dependency 'LCSKit/UI'
+  end
+  
+  s.subspec 'UI' do |ss|
+    ss.source_files = 'LCSKit/UI/*.{swift}'
+    ss.frameworks = 'UIKit'
+    ss.dependency 'SnapKit'
+    ss.dependency 'LCSKit/Extension'
   end
   
   s.subspec 'Utility' do |ss|
     ss.source_files = 'LCSKit/Utility/*.{swift}'
     ss.frameworks = 'UIKit', 'AdSupport', 'CoreTelephony'
   end
-  
-  s.subspec 'Photos' do |ss|
-    ss.source_files = 'LCSKit/Photos/*.{swift}'
-    ss.frameworks = 'AVFoundation', 'Photos'
-    ss.dependency 'LCSKit/Utility'
-  end
-  
+    
   s.swift_version = '5.2.2'
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
 
