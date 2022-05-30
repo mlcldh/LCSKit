@@ -13,7 +13,7 @@ public class ViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     private enum Title: String {
         case viewGesture = "UIView、UIControl的手势事件"
-        case urlEncodeDecode = "URL编解码"
+        case stringExtension = "String extension"
         case combineViews = "批量连接视图"
         case useConstraintPurely = "直接调用系统方法操作约束"
         case deviceUtility = "工具类MLCDeviceUtility"
@@ -29,7 +29,7 @@ public class ViewController: UIViewController, UITableViewDelegate, UITableViewD
         case inheritBaseTableListView = "继承LCSBaseTableListView"
         case useProgressHUD = "使用LCSProgressHUD"
     }
-    private let titles: [Title] = [.viewGesture, .urlEncodeDecode, .combineViews, .useConstraintPurely, .deviceUtility, .openUtility, .photos, .seeLocalFile, .useProxy, .useArchiver, .json, .annularView, .fanShaped, .inheritBaseTableListViewController, .inheritBaseTableListView, .useProgressHUD]
+    private let titles: [Title] = [.viewGesture, .stringExtension, .combineViews, .useConstraintPurely, .deviceUtility, .openUtility, .photos, .seeLocalFile, .useProxy, .useArchiver, .json, .annularView, .fanShaped, .inheritBaseTableListViewController, .inheritBaseTableListView, .useProgressHUD]
     
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +47,7 @@ public class ViewController: UIViewController, UITableViewDelegate, UITableViewD
         tableView.delegate = self
         tableView.dataSource = self
         view.addSubview(tableView)
-        tableView.snp_makeConstraints { (make) in
+        tableView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
     }
@@ -63,8 +63,8 @@ public class ViewController: UIViewController, UITableViewDelegate, UITableViewD
         switch title {
         case .viewGesture:
             vc = LCViewGestureViewController()
-        case .urlEncodeDecode:
-            vc = LCUrlEncodeViewController()
+        case .stringExtension:
+            vc = LCStringExtensionViewController()
         case .combineViews:
             vc = LCCombineViewsViewController()
         case .useConstraintPurely:

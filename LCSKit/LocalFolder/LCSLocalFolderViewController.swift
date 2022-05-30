@@ -64,7 +64,7 @@ public class LCSLocalFolderViewController: UIViewController, UITableViewDelegate
         tableView.delegate = self
         tableView.dataSource = self
         view.addSubview(tableView)
-        tableView.snp_makeConstraints { (make) in
+        tableView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
     }

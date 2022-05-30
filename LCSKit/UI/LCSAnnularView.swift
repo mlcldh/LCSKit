@@ -45,7 +45,7 @@ public class LCSAnnularView: UIView {
         }
         lineBackground.shapeLayer().path = path.cgPath
         addSubview(lineBackground)
-        lineBackground.snp_makeConstraints { (make) in
+        lineBackground.snp.makeConstraints { (make) in
             make.center.equalToSuperview()
             make.width.height.equalToSuperview().offset(-strokeThickness)
         }
@@ -56,7 +56,7 @@ public class LCSAnnularView: UIView {
         line.shapeLayer().path = path.cgPath
         line.shapeLayer().strokeEnd = 0
         addSubview(line)
-        line.snp_makeConstraints { (make) in
+        line.snp.makeConstraints { (make) in
             make.edges.equalTo(lineBackground)
         }
     }

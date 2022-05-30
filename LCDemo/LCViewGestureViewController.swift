@@ -59,7 +59,7 @@ class LCViewGestureViewController: LCBaseViewController {
             print("menglc swipe")
         }
         view.addSubview(label)
-        label.snp_makeConstraints { (make) in
+        label.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(20)
             make.top.equalToSuperview().offset(100)
             make.size.equalTo(CGSize(width: 80, height: 40))
@@ -82,7 +82,7 @@ class LCViewGestureViewController: LCBaseViewController {
             print("menglc button UIControlEventTouchUpInside3")
         }
         view.addSubview(button)
-        button.snp_makeConstraints { (make) in
+        button.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(20)
             make.top.equalToSuperview().offset(150)
         }
@@ -96,7 +96,7 @@ class LCViewGestureViewController: LCBaseViewController {
             print("menglc aSwitch.isOn \(switch2.isOn)")
         }
         view.addSubview(aSwitch)
-        aSwitch.snp_makeConstraints { (make) in
+        aSwitch.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(20)
             make.top.equalToSuperview().offset(200)
         }

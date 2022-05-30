@@ -29,7 +29,7 @@ class LCUseAnnularViewController: LCBaseViewController {
         annularView.line.shapeLayer().lineCap = .round
         annularView.line.shapeLayer().strokeEnd = 0.3//环结束位置
         view.addSubview(annularView)
-        annularView.snp_makeConstraints { (make) in
+        annularView.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(20)
             make.top.equalToSuperview().offset(100)
             make.width.height.equalTo(width)
@@ -42,7 +42,7 @@ class LCUseAnnularViewController: LCBaseViewController {
         let annularView = LCSAnnularView(strokeThickness: 6, width: width, height: height)
         annularView.line.shapeLayer().strokeEnd = 0.3
         view.addSubview(annularView)
-        annularView.snp_makeConstraints { (make) in
+        annularView.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(20)
             make.top.equalToSuperview().offset(250)
             make.width.equalTo(width)
@@ -56,7 +56,7 @@ class LCUseAnnularViewController: LCBaseViewController {
         let annularView = LCSAnnularView(strokeThickness: 6, width: width, height: height, oval: true)
         annularView.line.shapeLayer().strokeEnd = 0.3
         view.addSubview(annularView)
-        annularView.snp_makeConstraints { (make) in
+        annularView.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(20)
             make.top.equalToSuperview().offset(400)
             make.width.equalTo(width)
@@ -69,7 +69,7 @@ class LCUseAnnularViewController: LCBaseViewController {
         let annularView = LCSAnnularView(strokeThickness: width/2, width: width)
         annularView.line.shapeLayer().strokeEnd = 0.3
         view.addSubview(annularView)
-        annularView.snp_makeConstraints { (make) in
+        annularView.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(20)
             make.top.equalToSuperview().offset(550)
             make.width.height.equalTo(width)

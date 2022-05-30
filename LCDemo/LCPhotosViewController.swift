@@ -46,7 +46,7 @@ class LCPhotosViewController: LCBaseViewController {
             }
         }
         view.addSubview(button)
-        button.snp_makeConstraints { (make) in
+        button.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(20)
             make.top.equalToSuperview().offset(100)
         }
@@ -60,7 +60,7 @@ class LCPhotosViewController: LCBaseViewController {
 //            LCSPhotoPermissionManager.req
 //        }
         view.addSubview(button)
-        button.snp_makeConstraints { (make) in
+        button.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(20)
             make.top.equalToSuperview().offset(150)
         }
@@ -87,7 +87,7 @@ class LCPhotosViewController: LCBaseViewController {
             }
         }
         view.addSubview(button)
-        button.snp_makeConstraints { (make) in
+        button.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(20)
             make.top.equalToSuperview().offset(200)
         }
@@ -101,7 +101,7 @@ class LCPhotosViewController: LCBaseViewController {
 //            LCSPhotoPermissionManager.request
 //        }
         view.addSubview(button)
-        button.snp_makeConstraints { (make) in
+        button.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(20)
             make.top.equalToSuperview().offset(250)
         }
@@ -115,7 +115,7 @@ class LCPhotosViewController: LCBaseViewController {
             LCSOpenUtility.openSettings()
         }
         view.addSubview(button)
-        button.snp_makeConstraints { (make) in
+        button.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(20)
             make.top.equalToSuperview().offset(300)
         }
@@ -131,7 +131,7 @@ class LCPhotosViewController: LCBaseViewController {
             }
         }
         view.addSubview(button)
-        button.snp_makeConstraints { (make) in
+        button.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(20)
             make.top.equalToSuperview().offset(350)
         }

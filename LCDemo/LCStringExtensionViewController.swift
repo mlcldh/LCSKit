@@ -1,5 +1,5 @@
 //
-//  LCUrlEncodeViewController.swift
+//  LCStringExtensionViewController.swift
 //  LCSKitDemo
 //
 //  Created by menglingchao on 2020/9/15.
@@ -7,16 +7,19 @@
 //
 
 import UIKit
+import LCSKit
 
-class LCUrlEncodeViewController: LCBaseViewController {
+class LCStringExtensionViewController: LCBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-                
-        useUrlEncode()
-        useUrlDecode()
+        
+//        useUrlEncode()
+//        useUrlDecode()
+        useSubstringFromIndex()
+        useSubstringToIndex()
     }
     // MARK: -
     private func useUrlEncode() {//URL编码
@@ -29,5 +32,15 @@ class LCUrlEncodeViewController: LCBaseViewController {
         let encodeString = string.lcs_urlEncode()
         let decodeString = (encodeString ?? "").lcs_urlDecode()
         print("menglc string = \(string),\n encodeString = \(encodeString ?? "nil"),\n decodeString = \(decodeString ?? "nil")")
+    }
+    private func useSubstringFromIndex() {//
+        let string = "abcdefg"
+        let string2 = string.lcs_substringFromIndex(1)
+        print("menglc useSubstringFromIndex \(string2)")
+    }
+    private func useSubstringToIndex() {//
+        let string = "abcdefg"
+        let string2 = string.lcs_substringToIndex(string.count - 1)
+        print("menglc useSubstringToIndex \(string2)")
     }
 }

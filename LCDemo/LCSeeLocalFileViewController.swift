@@ -30,7 +30,7 @@ class LCSeeLocalFileViewController: LCBaseViewController {
             self.navigationController?.pushViewController(localFolderVC, animated: true)
         }
         view.addSubview(seeLocalFileButton)
-        seeLocalFileButton.snp_makeConstraints { (make) in
+        seeLocalFileButton.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(20)
             make.top.equalToSuperview().offset(100)
         }

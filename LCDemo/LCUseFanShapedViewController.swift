@@ -26,7 +26,7 @@ class LCUseFanShapedViewController: LCBaseViewController {
 //        fanShapedView.line.shapeLayer().lineCap = .round
         fanShapedView.line.shapeLayer().strokeEnd = 0.3//扇形结束位置
         view.addSubview(fanShapedView)
-        fanShapedView.snp_makeConstraints { (make) in
+        fanShapedView.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(20)
             make.top.equalToSuperview().offset(100)
             make.width.height.equalTo(width)

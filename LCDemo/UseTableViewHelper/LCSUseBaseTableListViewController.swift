@@ -22,7 +22,7 @@ class LCSUseBaseTableListViewController: LCBaseViewController {
     // MARK: -
     private func addTableListView() {
         view.addSubview(tableListView)
-        tableListView.snp_makeConstraints { make in
+        tableListView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
         

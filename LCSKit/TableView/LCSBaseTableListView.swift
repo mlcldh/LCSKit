@@ -47,7 +47,7 @@ open class LCSBaseTableListView: UIView {
         }
         tableView.tableFooterView = UIView()
         addSubview(tableView)
-        tableView.snp_makeConstraints { (make) in
+        tableView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
     }

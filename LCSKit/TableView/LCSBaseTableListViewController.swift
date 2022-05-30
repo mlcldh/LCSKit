@@ -48,7 +48,7 @@ open class LCSBaseTableListViewController: UIViewController {
             tableView.contentInsetAdjustmentBehavior = .never
         }
         view.addSubview(tableView)
-        tableView.snp_makeConstraints { (make) in
+        tableView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
     }

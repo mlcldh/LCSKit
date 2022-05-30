@@ -31,7 +31,7 @@ class LCUseProgressHUDViewController: LCBaseViewController {
             self.view.lcs_showToastHud(title: "这个文案很长。这个文案很长。这个文案很长。这个文案很长。这个文案很长。这个文案很长。这个文案很长。这个文案很长。这个文案很长。这个文案很长。这个文案很长。", hideAfterDelay: 2)
         }
         view.addSubview(button)
-        button.snp_makeConstraints { (make) in
+        button.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(20)
             make.top.equalToSuperview().offset(100)
 //            make.width.height.equalTo(200)
@@ -52,7 +52,7 @@ class LCUseProgressHUDViewController: LCBaseViewController {
             }
         }
         view.addSubview(button)
-        button.snp_makeConstraints { (make) in
+        button.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(150)
             make.top.equalToSuperview().offset(100)
         }
@@ -77,7 +77,7 @@ class LCUseProgressHUDViewController: LCBaseViewController {
             hud.hideAfterDelay(2)
         }
         view.addSubview(button)
-        button.snp_makeConstraints { (make) in
+        button.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(20)
             make.top.equalToSuperview().offset(150)
         }

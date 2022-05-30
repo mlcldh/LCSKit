@@ -37,7 +37,7 @@ public class LCSProgressHUD: UIView {//@objcMembers
         didSet {
             lcs_removeConstraints(firstItem: bezelView, firstAttribute: .width)
 //            bezelView.lcs_removeConstraints(firstAttribute: .width, secondItem: self)
-            bezelView.snp_makeConstraints { make in
+            bezelView.snp.makeConstraints { make in
                 make.width.lessThanOrEqualToSuperview().multipliedBy(bezelViewMaxWidthRate)
             }
         }
@@ -84,7 +84,7 @@ public class LCSProgressHUD: UIView {//@objcMembers
                 return
             }
             bezelView.addSubview(aCustomView)
-            aCustomView.snp_makeConstraints { make in
+            aCustomView.snp.makeConstraints { make in
                 make.edges.equalToSuperview()
             }
         }
@@ -114,14 +114,14 @@ public class LCSProgressHUD: UIView {//@objcMembers
         switch aType {
         case .toast:
             addTitleLabel()
-            titleLabel.snp_makeConstraints { make in
+            titleLabel.snp.makeConstraints { make in
                 make.top.equalToSuperview()
             }
         case .loading:
             addAnnularView()
             
             addTitleLabel()
-            titleLabel.snp_makeConstraints { make in
+            titleLabel.snp.makeConstraints { make in
                 make.top.equalTo(annularView.snp_bottom).offset(5)
             }
         case .custom:
@@ -139,13 +139,13 @@ public class LCSProgressHUD: UIView {//@objcMembers
     // MARK: -
     private func addBackgroundView() {
         addSubview(backgroundView)
-        backgroundView.snp_makeConstraints { make in
+        backgroundView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
     }
     private func addBezelView() {
         addSubview(bezelView)
-        bezelView.snp_makeConstraints { make in
+        bezelView.snp.makeConstraints { make in
             make.center.equalToSuperview()
             make.width.lessThanOrEqualToSuperview()
             make.height.lessThanOrEqualToSuperview()
@@ -153,14 +153,14 @@ public class LCSProgressHUD: UIView {//@objcMembers
     }
     private func addAnnularView() {
         bezelView.addSubview(annularView)
-        annularView.snp_makeConstraints { make in
+        annularView.snp.makeConstraints { make in
             make.centerX.top.equalToSuperview()
             make.width.height.equalTo(annularWidth)
         }
     }
     private func addTitleLabel() {
         bezelView.addSubview(titleLabel)
-        titleLabel.snp_makeConstraints { make in
+        titleLabel.snp.makeConstraints { make in
             make.left.right.bottom.equalToSuperview()
         }
     }

@@ -66,7 +66,7 @@ class LCSDemoTableListViewController: LCSBaseTableListViewController {
             self.refresh(isShowLoading: true)
         }
         view.addSubview(refreshSuccessButton)
-        refreshSuccessButton.snp_makeConstraints { (make) in
+        refreshSuccessButton.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(20)
             make.top.equalToSuperview().offset(100)
         }
@@ -79,7 +79,7 @@ class LCSDemoTableListViewController: LCSBaseTableListViewController {
             self.refresh(isShowLoading: true)
         }
         view.addSubview(refreshErrorButton)
-        refreshErrorButton.snp_makeConstraints { (make) in
+        refreshErrorButton.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(120)
             make.top.equalToSuperview().offset(100)
         }
@@ -92,7 +92,7 @@ class LCSDemoTableListViewController: LCSBaseTableListViewController {
             self.refresh(isShowLoading: true)
         }
         view.addSubview(refreshEmptyButton)
-        refreshEmptyButton.snp_makeConstraints { (make) in
+        refreshEmptyButton.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(220)
             make.top.equalToSuperview().offset(100)
         }

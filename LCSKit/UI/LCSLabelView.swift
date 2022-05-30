@@ -17,7 +17,7 @@ public class LCSLabelView: UIView {
     /**label离LCSLabelView四周的间距*/
     public var labelContainerInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0) {
         didSet {
-            label.snp_makeConstraints { (make) in
+            label.snp.makeConstraints { (make) in
                 make.edges.equalToSuperview().inset(labelContainerInset)
             }
         }
@@ -27,7 +27,7 @@ public class LCSLabelView: UIView {
         super.init(frame: frame)
         
         addSubview(label)
-        label.snp_makeConstraints { (make) in
+        label.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
     }

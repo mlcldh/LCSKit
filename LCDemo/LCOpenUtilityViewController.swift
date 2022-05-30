@@ -31,7 +31,7 @@ class LCOpenUtilityViewController: LCBaseViewController {
             LCSOpenUtility.call(telephoneNumber: "13813813813")
         }
         view.addSubview(button)
-        button.snp_makeConstraints { (make) in
+        button.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(20)
             make.top.equalToSuperview().offset(100)
         }
@@ -48,7 +48,7 @@ class LCOpenUtilityViewController: LCBaseViewController {
             LCSOpenUtility.sendShortMessage(shortMessage: msg)
         }
         view.addSubview(button)
-        button.snp_makeConstraints { (make) in
+        button.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(80)
             make.top.equalToSuperview().offset(100)
         }
@@ -62,7 +62,7 @@ class LCOpenUtilityViewController: LCBaseViewController {
             LCSOpenUtility.sendEmail(email: "13813813813@qq.com")
         }
         view.addSubview(button)
-        button.snp_makeConstraints { (make) in
+        button.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(140)
             make.top.equalToSuperview().offset(100)
         }
@@ -76,7 +76,7 @@ class LCOpenUtilityViewController: LCBaseViewController {
             LCSOpenUtility.openSettings()
         }
         view.addSubview(button)
-        button.snp_makeConstraints { (make) in
+        button.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(200)
             make.top.equalToSuperview().offset(100)
         }

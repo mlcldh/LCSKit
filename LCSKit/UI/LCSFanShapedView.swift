@@ -22,7 +22,7 @@ public class LCSFanShapedView: UIView {
         backgroundView.backgroundColor = .lightGray
         backgroundView.layer.cornerRadius = width / 2
         addSubview(backgroundView)
-        backgroundView.snp_makeConstraints { make in
+        backgroundView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
         
@@ -34,7 +34,7 @@ public class LCSFanShapedView: UIView {
         line.shapeLayer().path = path.cgPath
         line.shapeLayer().strokeEnd = 0
         addSubview(line)
-        line.snp_makeConstraints { (make) in
+        line.snp.makeConstraints { (make) in
             make.center.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(0.5)
             make.height.equalToSuperview().multipliedBy(0.5)

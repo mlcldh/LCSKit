@@ -7,14 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4A48DDAC1C51E31B6110A4E2 /* libPods-LCSKitDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08C5BF95173C8B25BCCA9C78 /* libPods-LCSKitDemo.a */; };
+		8BFB9A56F66AA310F96238F6 /* libPods-LCSKitDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A262B9B5446C7E647061733F /* libPods-LCSKitDemo.a */; };
 		8DFCDB26250F4EBE00DBEE89 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFCDB25250F4EBE00DBEE89 /* AppDelegate.swift */; };
 		8DFCDB2F250F4EC200DBEE89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DFCDB2E250F4EC200DBEE89 /* Assets.xcassets */; };
 		8DFCDB32250F4EC200DBEE89 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DFCDB30250F4EC200DBEE89 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		08C5BF95173C8B25BCCA9C78 /* libPods-LCSKitDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LCSKitDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		39D075901404C84845F75428 /* Pods-LCSKitDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LCSKitDemo.debug.xcconfig"; path = "Target Support Files/Pods-LCSKitDemo/Pods-LCSKitDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		640063066A263237B156D052 /* Pods-LCSKitDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LCSKitDemo.release.xcconfig"; path = "Target Support Files/Pods-LCSKitDemo/Pods-LCSKitDemo.release.xcconfig"; sourceTree = "<group>"; };
 		8DB76D0C2665DE74004F5AFE /* LCSKitDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LCSKitDemo.entitlements; sourceTree = "<group>"; };
@@ -23,6 +22,7 @@
 		8DFCDB2E250F4EC200DBEE89 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8DFCDB31250F4EC200DBEE89 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8DFCDB33250F4EC200DBEE89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A262B9B5446C7E647061733F /* libPods-LCSKitDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LCSKitDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -30,7 +30,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4A48DDAC1C51E31B6110A4E2 /* libPods-LCSKitDemo.a in Frameworks */,
+				8BFB9A56F66AA310F96238F6 /* libPods-LCSKitDemo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,7 +70,7 @@
 		A2747B3E17D53C6ACF57F638 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				08C5BF95173C8B25BCCA9C78 /* libPods-LCSKitDemo.a */,
+				A262B9B5446C7E647061733F /* libPods-LCSKitDemo.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -95,7 +95,7 @@
 				8DFCDB1E250F4EBE00DBEE89 /* Sources */,
 				8DFCDB1F250F4EBE00DBEE89 /* Frameworks */,
 				8DFCDB20250F4EBE00DBEE89 /* Resources */,
-				842996288CD4D6A27AD1A43E /* [CP] Copy Pods Resources */,
+				146EC019C99296E0489640E8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -152,7 +152,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		842996288CD4D6A27AD1A43E /* [CP] Copy Pods Resources */ = {
+		146EC019C99296E0489640E8 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
