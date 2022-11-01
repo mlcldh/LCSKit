@@ -11,7 +11,7 @@ import UIKit
 class LCBaseViewController: UIViewController {
     
     deinit {
-        print("menglc deinit \(self)")
+        print("menglc deinit \(self) \(Date().timeIntervalSince1970)")
     }
     override func viewDidLoad() {
         super.viewDidLoad()

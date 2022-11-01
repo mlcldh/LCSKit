@@ -7,6 +7,7 @@ PODS:
     - LCSKit/Extension (= 0.0.1)
     - LCSKit/LocalFolder (= 0.0.1)
     - LCSKit/Photos (= 0.0.1)
+    - LCSKit/Proxy (= 0.0.1)
     - LCSKit/TableView (= 0.0.1)
     - LCSKit/UI (= 0.0.1)
     - LCSKit/Utility (= 0.0.1)
@@ -18,6 +19,7 @@ PODS:
     - SnapKit
   - LCSKit/Photos (0.0.1):
     - LCSKit/Utility
+  - LCSKit/Proxy (0.0.1)
   - LCSKit/TableView (0.0.1):
     - LCSKit/Extension
     - LCSKit/UI
@@ -52,11 +54,11 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   LCDemo: 91052079c8ce198bc61fbb228a9ba65545056682
-  LCSKit: 0b7dc69e2d032205b5747675c38fcf99aa687ae5
+  LCSKit: 5b790b08ae36db192221e79514e7850998c5216d
   MJRefresh: 6afc955813966afb08305477dd7a0d9ad5e79a16
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
 
 PODFILE CHECKSUM: 1c1c8984a06b763e2c99ff9cfc1b0f251763db96
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.9.3

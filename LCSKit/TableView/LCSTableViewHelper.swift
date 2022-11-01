@@ -3,7 +3,7 @@
 //  LCSKit
 //
 //  Created by menglingchao on 2021/3/23.
-//  Copyright © 2021 ximalaya. All rights reserved.
+//  Copyright © 2021 MengLingChao. All rights reserved.
 //
 
 import UIKit

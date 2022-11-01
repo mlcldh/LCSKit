@@ -78,7 +78,7 @@ public class ViewController: UIViewController, UITableViewDelegate, UITableViewD
         case .seeLocalFile:
             vc = LCSeeLocalFileViewController()
         case .useProxy:
-            vc = UIViewController()
+            vc = LCUseProxyViewController()
         case .useArchiver:
             vc = UIViewController()
         case .json:

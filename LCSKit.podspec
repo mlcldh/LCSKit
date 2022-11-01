@@ -47,15 +47,15 @@ Pod::Spec.new do |s|
     ss.frameworks = 'UIKit'
   end
   
-#  s.subspec 'Proxy' do |ss|
-#    ss.source_files = 'LCSKit/Proxy/*.{swift}'
-#    ss.frameworks = 'Foundation'
-#  end
-  
   s.subspec 'Photos' do |ss|
     ss.source_files = 'LCSKit/Photos/*.{swift}'
     ss.frameworks = 'AVFoundation', 'Photos'
     ss.dependency 'LCSKit/Utility'
+  end
+  
+  s.subspec 'Proxy' do |ss|
+    ss.source_files = 'LCSKit/Proxy/*.{swift}'
+    ss.frameworks = 'Foundation'
   end
   
   s.subspec 'TableView' do |ss|
