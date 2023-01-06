@@ -35,15 +35,18 @@ open class LCSBaseTableListView: UIView {
     // MARK: -
     private func addTableView() {
         tableView.backgroundColor = .white
-        tableView.separatorStyle = .none
+//        tableView.separatorStyle = .none
         tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 44
         tableView.sectionHeaderHeight = 0
         tableView.sectionFooterHeight = 0
+        tableView.estimatedRowHeight = 44
         tableView.estimatedSectionHeaderHeight = 0
         tableView.estimatedSectionFooterHeight = 0
         if #available(iOS 11, *) {
             tableView.contentInsetAdjustmentBehavior = .never
+        }
+        if #available(iOS 15, *) {
+            tableView.sectionHeaderTopPadding = 0
         }
         tableView.tableFooterView = UIView()
         addSubview(tableView)

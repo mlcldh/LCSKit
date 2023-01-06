@@ -47,6 +47,9 @@ open class LCSBaseTableListViewController: UIViewController {
         if #available(iOS 11, *) {
             tableView.contentInsetAdjustmentBehavior = .never
         }
+        if #available(iOS 15, *) {
+            tableView.sectionHeaderTopPadding = 0
+        }
         view.addSubview(tableView)
         tableView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
